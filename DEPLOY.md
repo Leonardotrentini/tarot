@@ -33,8 +33,12 @@ Este projeto está pronto para ser implantado em várias plataformas. Escolha a 
 4. Configure:
    - **Framework Preset**: Other
    - **Root Directory**: `./`
+   - **Build Command**: deixe vazio
+   - **Output Directory**: deixe vazio (projeto estático)
 5. Clique em "Deploy"
 6. Pronto!
+
+**Nota**: Este repo já inclui `vercel.json` para servir `index.html` como página principal.
 
 ---
 
