@@ -1,0 +1,2447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Leitura Sagrada do Tarô — Seu Caminho Revelado</title>
+<meta name="theme-color" content="#080f24">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '25790031400693148');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=25790031400693148&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #080f24;
+  --navy-mid: #0e1a3a;
+  --navy-card: #111f45;
+  --gold: #c9960a;
+  --gold-light: #f0c040;
+  --gold-pale: #e8d5a0;
+  --gold-dim: rgba(201,150,10,0.3);
+  --cream: #f2e8d5;
+  --cream-dim: #b0a080;
+  --white: #ffffff;
+  --text: #ddd8cc;
+  --text-dim: #7a8aaa;
+  --red: #e84040;
+  --glow: rgba(201,150,10,0.2);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── CANVAS DE PARTÍCULAS ── */
+#particles-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── NEBULA OVERLAY ── */
+.nebula {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 10%, rgba(40,20,100,0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 90%, rgba(10,5,50,0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(201,150,10,0.03) 0%, transparent 60%);
+}
+
+/* ── WRAP ── */
+.quiz-wrap {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── SCREENS ── */
+.screen {
+  display: none;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 56px 28px 100px;
+}
+.screen.active {
+  display: block;
+  animation: screenIn 0.9s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+@keyframes screenIn {
+  from { opacity:0; transform:translateY(32px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  width: 100%;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(201,150,10,0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.topbar-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--gold);
+  letter-spacing: 2px;
+  opacity: 0.85;
+}
+
+.topbar-step {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+/* ── PROGRESS ── */
+.progress-outer {
+  width: 100%;
+  height: 2px;
+  background: rgba(201,150,10,0.08);
+  position: relative;
+  z-index: 2;
+}
+.progress-inner {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transition: width 0.8s cubic-bezier(0.22,1,0.36,1);
+  box-shadow: 0 0 10px rgba(201,150,10,0.5);
+}
+
+/* ── TYPOGRAPHY ── */
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 24px;
+  opacity: 0.9;
+}
+
+.headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5.5vw, 46px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 16px;
+}
+.headline em { font-style:italic; color:var(--gold-light); }
+
+.subtext {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-dim);
+  text-align: center;
+  max-width: 540px;
+  margin: 0 auto 40px;
+}
+.subtext strong { color: var(--cream); font-weight:400; }
+
+/* ── DIVIDERS ── */
+.divider {
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 24px auto;
+}
+.divider-sym {
+  text-align: center;
+  color: var(--gold);
+  font-size: 14px;
+  margin: 16px 0;
+  opacity: 0.5;
+  letter-spacing: 8px;
+}
+
+/* ── RITUAL TEXT BOX ── */
+.ritual-box {
+  background: rgba(201,150,10,0.04);
+  border: 1px solid rgba(201,150,10,0.18);
+  border-left: 3px solid var(--gold);
+  padding: 28px 36px;
+  margin: 32px auto;
+  max-width: 580px;
+  position: relative;
+}
+.ritual-box::before {
+  content: '"';
+  position: absolute;
+  top: -16px; left: 28px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  color: var(--gold);
+  opacity: 0.18;
+  line-height: 1;
+}
+.ritual-box p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.85;
+  color: var(--cream);
+}
+.ritual-box strong { color: var(--gold-light); font-style:normal; font-weight:400; }
+
+/* ── OPTION BUTTONS ── */
+.options { display:flex; flex-direction:column; gap:14px; max-width:540px; margin:0 auto; }
+
+.opt-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px 26px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,150,10,0.18);
+  cursor: pointer;
+  transition: all 0.35s ease;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.6;
+  position: relative;
+  overflow: hidden;
+}
+.opt-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201,150,10,0.07) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.opt-btn:hover { border-color:rgba(201,150,10,0.5); transform:translateX(6px); color:var(--white); }
+.opt-btn:hover::after { opacity:1; }
+
+.opt-icon { font-size:24px; flex-shrink:0; margin-top:2px; }
+.opt-body strong { display:block; font-weight:600; color:var(--white); margin-bottom:4px; font-size:15px; }
+
+/* ── TAROT CARDS ── */
+.cards-spread {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+  margin: 44px auto;
+  flex-wrap: wrap;
+  perspective: 1200px;
+}
+
+.t-card {
+  width: 130px;
+  height: 220px;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease;
+  border-radius: 4px;
+}
+
+.t-card:nth-child(1) { transform: rotate(-4deg) translateY(8px); }
+.t-card:nth-child(2) { transform: rotate(0deg) translateY(0px); }
+.t-card:nth-child(3) { transform: rotate(4deg) translateY(8px); }
+.t-card:nth-child(4) { transform: rotate(-2deg) translateY(4px); }
+.t-card:nth-child(5) { transform: rotate(2deg) translateY(4px); }
+
+.t-card:hover { transform: rotate(0deg) translateY(-14px) scale(1.04) !important; }
+
+.t-card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  border: 1px solid rgba(201,150,10,0.25);
+  background: linear-gradient(160deg, #0f1f50 0%, #080f24 70%, #111840 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 10px 14px;
+  overflow: hidden;
+}
+
+.t-card-face::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(201,150,10,0.12);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.t-card-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: repeating-linear-gradient(
+    45deg, transparent, transparent 6px,
+    rgba(201,150,10,1) 6px, rgba(201,150,10,1) 7px
+  );
+  border-radius: 4px;
+}
+
+.t-card:hover .t-card-face {
+  border-color: rgba(201,150,10,0.55);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.6), 0 0 40px rgba(201,150,10,0.18);
+}
+
+.t-card-art {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.t-card-art svg {
+  width: 72px;
+  height: 100px;
+  opacity: 0.45;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+.t-card:hover .t-card-art svg {
+  opacity: 0.75;
+  filter: drop-shadow(0 0 10px rgba(201,150,10,0.4));
+}
+
+.t-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--gold);
+  text-align: center;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.t-card-tap {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 6px;
+  opacity: 0.6;
+}
+
+/* CARD CHOSEN GLOW */
+@keyframes chosenPulse {
+  0%,100% { box-shadow: 0 0 20px rgba(201,150,10,0.3), 0 0 0 1px rgba(201,150,10,0.4); }
+  50% { box-shadow: 0 0 50px rgba(201,150,10,0.6), 0 0 0 2px rgba(201,150,10,0.7); }
+}
+.t-card.chosen { transform: rotate(0deg) translateY(-14px) scale(1.06) !important; }
+.t-card.chosen .t-card-face { animation: chosenPulse 1.5s ease-in-out infinite; border-color: var(--gold); }
+
+/* ── REVEAL CARD ── */
+.reveal-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px auto;
+}
+
+.reveal-card-big {
+  width: 180px;
+  height: 300px;
+  border: 1px solid rgba(201,150,10,0.4);
+  background: linear-gradient(160deg, #0f1f50 0%, #080f24 70%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  animation: revealFloat 4s ease-in-out infinite;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.5), 0 0 40px rgba(201,150,10,0.15);
+}
+
+@keyframes revealFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.reveal-card-big::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(201,150,10,0.15);
+}
+
+.reveal-card-big svg {
+  width: 100px;
+  height: 140px;
+  filter: drop-shadow(0 0 16px rgba(201,150,10,0.45));
+}
+
+.reveal-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--gold-light);
+  text-align: center;
+  margin-top: 32px;
+  letter-spacing: 1px;
+}
+
+.reveal-card-sub {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* ── VALIDATION BOX ── */
+.visceral-box {
+  background: rgba(8,15,36,0.8);
+  border: 1px solid rgba(201,150,10,0.22);
+  padding: 36px 40px;
+  margin: 32px auto;
+  max-width: 580px;
+  position: relative;
+}
+.visceral-box::after {
+  content: '';
+  position: absolute;
+  top:-1px; left:20%; right:20%;
+  height:2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.visceral-q {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--cream);
+  margin-bottom: 28px;
+  text-align: center;
+}
+.visceral-q strong { color: var(--gold-light); font-style:normal; }
+
+/* ── DATE INPUT ── */
+.date-wrap { max-width:460px; margin:36px auto; }
+.date-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 18px;
+  text-align: center;
+}
+.date-row { display:flex; gap:12px; }
+.date-row select {
+  flex:1;
+  padding: 16px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,150,10,0.22);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23c9960a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 30px;
+}
+.date-row select:focus { outline:none; border-color:var(--gold); }
+.date-row select option { background: var(--navy-mid); color:var(--white); }
+
+/* ── LOADING ── */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 85vh;
+  padding: 48px 28px;
+}
+
+.loading-sigil {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  margin-bottom: 48px;
+}
+.loading-sigil svg { width:100%; height:100%; }
+.sigil-outer { animation: rotateCW 12s linear infinite; transform-origin: center; }
+.sigil-inner { animation: rotateCCW 8s linear infinite; transform-origin: center; }
+.sigil-core { animation: sigilPulse 2s ease-in-out infinite; transform-origin: center; }
+
+@keyframes rotateCW { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+@keyframes rotateCCW { from{transform:rotate(0deg)} to{transform:rotate(-360deg)} }
+@keyframes sigilPulse {
+  0%,100% { opacity:0.5; transform:scale(0.9); }
+  50% { opacity:1; transform:scale(1.1); }
+}
+
+.loading-msgs {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--cream-dim);
+  text-align: center;
+  margin-bottom: 36px;
+  min-height: 30px;
+  transition: opacity 0.5s ease;
+}
+
+.loading-bar-wrap {
+  width: 260px;
+  height: 2px;
+  background: rgba(201,150,10,0.1);
+  position: relative;
+  margin-bottom: 12px;
+}
+.loading-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  box-shadow: 0 0 8px rgba(201,150,10,0.5);
+  transition: width 0.3s ease;
+}
+.loading-pct {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-align: center;
+}
+
+/* ── RESULT ── */
+.alert-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(232,64,64,0.08);
+  border: 1px solid rgba(232,64,64,0.25);
+  padding: 14px 28px;
+  margin-bottom: 36px;
+}
+.alert-strip span {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #ff7070;
+  text-transform: uppercase;
+}
+
+.result-cards-mini {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 28px 0;
+}
+.rc-pill {
+  padding: 7px 16px;
+  border: 1px solid rgba(201,150,10,0.3);
+  background: rgba(201,150,10,0.05);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.diagnosis-panel {
+  background: linear-gradient(135deg, rgba(14,26,58,0.95) 0%, rgba(8,15,36,0.9) 100%);
+  border: 1px solid rgba(201,150,10,0.22);
+  padding: 40px 44px;
+  margin: 28px 0;
+  position: relative;
+}
+.diagnosis-panel::before {
+  content: '';
+  position: absolute;
+  top:-1px; left:15%; right:15%;
+  height:2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.diag-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.diag-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 600;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 28px;
+  line-height: 1.3;
+}
+
+.diag-body { font-size:15px; line-height:1.9; color:var(--text); }
+.diag-body p { margin-bottom:18px; }
+.diag-body p:last-child { margin-bottom:0; }
+.diag-body strong { color:var(--gold-light); font-weight:500; }
+.diag-body em { font-style:italic; color:var(--cream); }
+
+/* PREVIEW BLUR */
+.preview-section {
+  border-left: 2px solid var(--gold);
+  padding: 28px 32px;
+  margin: 28px 0;
+  background: rgba(255,255,255,0.02);
+  position: relative;
+  overflow: hidden;
+}
+.preview-section::after {
+  content: '';
+  position: absolute;
+  bottom:0; left:0; right:0;
+  height: 100px;
+  background: linear-gradient(0deg, var(--navy) 0%, transparent 100%);
+}
+.preview-section p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.85;
+  color: var(--cream);
+}
+.preview-hint {
+  text-align: center;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text-dim);
+  margin-top: 8px;
+}
+
+/* ── TESTIMONIALS ── */
+.testi-section { margin:48px 0 0; }
+.section-title {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.testi {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(201,150,10,0.1);
+  padding: 26px 30px;
+  margin-bottom: 16px;
+  transition: border-color 0.3s;
+}
+.testi:hover { border-color: rgba(201,150,10,0.25); }
+.testi-stars { color: var(--gold); font-size: 13px; margin-bottom: 10px; }
+.testi-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.testi-text strong { color: var(--gold-light); font-style:normal; font-weight:400; }
+.testi-author { font-size: 11px; letter-spacing: 2px; color: var(--text-dim); text-transform: uppercase; }
+
+/* ── OFFER BOX ── */
+.offer-wrap { margin: 48px 0 0; }
+
+.offer-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 4.5vw, 36px);
+  font-weight: 400;
+  text-align: center;
+  color: var(--white);
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.offer-headline em { font-style:italic; color:var(--gold-light); }
+
+.offer-sub {
+  font-size: 14px;
+  text-align: center;
+  color: var(--text-dim);
+  margin-bottom: 36px;
+  line-height: 1.7;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.offer-panel {
+  border: 1px solid rgba(201,150,10,0.3);
+  background: linear-gradient(135deg, rgba(14,26,58,0.7) 0%, rgba(8,15,36,0.95) 100%);
+  padding: 44px;
+  position: relative;
+}
+.offer-panel::before {
+  content: '';
+  position: absolute;
+  top:-1px; left:8%; right:8%;
+  height:2px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+}
+
+.offer-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.offer-list { list-style:none; margin-bottom:32px; }
+.offer-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(201,150,10,0.07);
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+}
+.offer-list li:last-child { border-bottom:none; }
+.offer-list li::before {
+  content: '✦';
+  color: var(--gold);
+  font-size: 10px;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* PRICE */
+.price-wrap { text-align:center; margin:36px 0 28px; }
+.price-from { font-size:13px; color:var(--text-dim); text-decoration:line-through; letter-spacing:1px; margin-bottom:6px; }
+.price-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 76px;
+  font-weight: 300;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.price-big sup { font-size:28px; vertical-align:top; margin-top:16px; display:inline-block; }
+.price-note { font-size:12px; color:var(--text-dim); letter-spacing:1px; }
+
+/* CTA */
+.cta-voice {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--cream);
+  text-align: center;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
+.btn-main {
+  display: block;
+  width: 100%;
+  padding: 24px 40px;
+  background: linear-gradient(135deg, #c9960a 0%, #f0c040 40%, #d4a820 70%, #c9960a 100%);
+  background-size: 200% auto;
+  color: #07100a;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-main:hover {
+  background-position: right center;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 50px rgba(201,150,10,0.4);
+}
+.btn-main::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.7s ease;
+}
+.btn-main:hover::after { transform: translateX(100%); }
+
+.btn-sub {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 12px;
+  letter-spacing: 1px;
+  line-height: 1.8;
+}
+
+/* GUARANTEE */
+.guarantee {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 24px 28px;
+  background: rgba(201,150,10,0.03);
+  border: 1px solid rgba(201,150,10,0.12);
+  margin: 32px 0;
+}
+.guar-seal {
+  flex-shrink: 0;
+  width: 76px;
+  height: 76px;
+  border: 2px solid rgba(201,150,10,0.4);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--gold);
+  text-align: center;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.guar-text { font-size:13px; line-height:1.75; color:var(--text-dim); }
+.guar-text strong { color:var(--text); font-weight:500; }
+
+/* TRUST BAR */
+.trust-bar {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 16px 0 4px;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+.trust-item em { color: var(--gold); font-style:normal; }
+
+/* CTA BUTTON SECONDARY */
+.btn-next {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  margin: 40px auto 0;
+  padding: 20px 40px;
+  background: linear-gradient(135deg, #c9960a 0%, #f0c040 50%, #c9960a 100%);
+  background-size: 200% auto;
+  color: #07100a;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-next:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(201,150,10,0.35);
+}
+
+/* ── PERFORMANCE HINTS ── */
+.screen.active { will-change: opacity, transform; }
+.reveal-card-big { will-change: transform; }
+.loading-sigil svg { will-change: transform; }
+
+/* ── REDUCE MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  .screen.active { animation: none; opacity: 1; transform: none; }
+  .reveal-card-big { animation: none; }
+  .sigil-outer, .sigil-inner, .sigil-core { animation: none; }
+  .map-node-circle::after { animation: none; }
+  .plan-day { transition: none; opacity: 1; transform: none; }
+  .btn-main::after { display: none; }
+}
+
+/* ── TOUCH / TAP TARGETS ── */
+.opt-btn, .btn-next, .btn-main, .t-card {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.opt-btn, .btn-next, .btn-main {
+  min-height: 48px; /* WCAG 2.5.5 tap target */
+}
+/* Prevent text selection during card interactions */
+.cards-spread, .t-card {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ── MAP ── */
+.map-container {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 32px auto 0;
+  height: 360px;
+}
+#map-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.map-nodes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.map-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.map-node.visible { opacity: 1; }
+.map-node-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,150,10,0.4);
+  background: linear-gradient(135deg, rgba(14,26,58,0.95) 0%, rgba(8,15,36,0.9) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 20px rgba(201,150,10,0.1);
+  position: relative;
+}
+.map-node-circle::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,150,10,0.15);
+  animation: nodePulse 3s ease-in-out infinite;
+}
+@keyframes nodePulse {
+  0%,100% { transform: scale(1); opacity:0.5; }
+  50% { transform: scale(1.08); opacity:1; }
+}
+.map-node-circle:hover {
+  border-color: rgba(201,150,10,0.7);
+  box-shadow: 0 0 40px rgba(201,150,10,0.25);
+  transform: scale(1.06);
+}
+.map-node-icon { font-size: 26px; margin-bottom: 4px; }
+.map-node-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--gold-light);
+  text-align: center;
+  line-height: 1.3;
+}
+.map-node-label {
+  margin-top: 8px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+  max-width: 110px;
+}
+.map-node-locked {
+  position: absolute;
+  top: 4px; right: 4px;
+  font-size: 11px;
+  opacity: 0.5;
+}
+/* center node bigger */
+.map-node.center .map-node-circle {
+  width: 120px;
+  height: 120px;
+  border-color: rgba(201,150,10,0.6);
+  box-shadow: 0 0 40px rgba(201,150,10,0.2);
+}
+.map-node.center .map-node-icon { font-size: 32px; }
+.map-node.center .map-node-name { font-size: 13px; }
+
+/* ── THERAPIES ── */
+.therapies-preview {
+  margin: 48px 0 0;
+}
+.therapy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 24px 0 16px;
+}
+.therapy-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,150,10,0.12);
+  padding: 18px 14px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+.therapy-card:hover {
+  border-color: rgba(201,150,10,0.3);
+  background: rgba(201,150,10,0.04);
+}
+.therapy-card.locked { opacity: 0.4; filter: blur(2px); pointer-events: none; }
+.therapy-icon { font-size: 24px; margin-bottom: 8px; }
+.therapy-name {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.4;
+}
+.therapy-type {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-top: 4px;
+}
+.therapy-lock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  background: rgba(201,150,10,0.04);
+  border: 1px solid rgba(201,150,10,0.1);
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.therapy-lock .lock-icon { font-size: 18px; margin-bottom: 0; }
+.lock-icon { font-size: 24px; margin-bottom: 8px; }
+
+/* ── PLAN PREVIEW ── */
+.plan-preview {
+  margin: 48px 0 0;
+  position: relative;
+}
+.plan-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.plan-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: #07100a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.plan-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.plan-sub { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.plan-days {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.plan-day {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(201,150,10,0.1);
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: all 0.5s ease;
+}
+.plan-day.visible { opacity:1; transform:translateX(0); }
+.plan-day-num {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(201,150,10,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  color: var(--gold);
+}
+.plan-day-content strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 3px;
+}
+.plan-day-content span { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+.plan-day-icon { font-size: 20px; flex-shrink:0; margin-top:4px; }
+.plan-blur {
+  position: relative;
+  height: 80px;
+  margin-top: -40px;
+  background: linear-gradient(0deg, var(--navy) 60%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 16px;
+}
+.plan-blur-text {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+/* ── BONUS BOX ── */
+.bonus-box {
+  background: linear-gradient(135deg, rgba(201,150,10,0.08) 0%, rgba(8,15,36,0.6) 100%);
+  border: 1px solid rgba(201,150,10,0.35);
+  padding: 28px 32px;
+  margin: 28px 0;
+  text-align: center;
+  position: relative;
+}
+.bonus-box::before {
+  content: '';
+  position: absolute;
+  top:-1px; left:20%; right:20%;
+  height:2px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+}
+.bonus-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 10px;
+}
+.bonus-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.bonus-desc {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.bonus-value {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.bonus-value span {
+  text-decoration: line-through;
+  color: var(--text-dim);
+}
+
+/* ══════════════════════════════════════
+   MOBILE-FIRST RESPONSIVE — single block
+══════════════════════════════════════ */
+
+/* Tablets e telas médias */
+@media(max-width:640px){
+  .screen { padding: 40px 20px 80px; }
+  .ritual-box { padding: 22px 20px; }
+  .visceral-box { padding: 24px 18px; }
+  .visceral-q { font-size: 17px; }
+  .diagnosis-panel { padding: 28px 20px; }
+  .offer-panel { padding: 28px 20px; }
+  .bonus-box { padding: 22px 18px; }
+  .preview-section { padding: 22px 18px; }
+  .testi { padding: 20px 18px; }
+  .guarantee { flex-direction: column; text-align: center; align-items:center; }
+  .plan-day { padding: 14px 14px; }
+  .topbar { padding: 14px 16px; }
+}
+
+/* Smartphones */
+@media(max-width:480px){
+  .screen { padding: 32px 16px 72px; }
+
+  /* Cartas — fluidas com gap reduzido */
+  .cards-spread { gap: 8px; margin: 28px auto; perspective: none; }
+  .t-card { width: clamp(70px, 18vw, 100px); height: clamp(118px, 30vw, 168px); }
+  .t-card-art svg { width: clamp(44px, 11vw, 62px); height: clamp(60px, 15vw, 86px); }
+  .t-card-name { font-size: 8px; letter-spacing: 0.5px; }
+  .t-card-tap { font-size: 8px; margin-top: 3px; }
+
+  /* Opções — sem shift horizontal no hover */
+  .opt-btn:hover { transform: none; }
+  .opt-btn { padding: 16px 14px; gap: 12px; }
+  .opt-icon { font-size: 20px; }
+  .opt-body strong { font-size: 13px; }
+
+  /* Mapa */
+  .map-container { height: 280px; }
+  .map-node-circle { width: 70px; height: 70px; padding: 6px; }
+  .map-node-circle::after { inset: -3px; }
+  .map-node-icon { font-size: 18px; margin-bottom: 2px; }
+  .map-node-name { font-size: 9px; }
+  .map-node-label { font-size: 8px; letter-spacing: 1px; margin-top: 5px; max-width: 80px; }
+  .map-node.center .map-node-circle { width: 84px; height: 84px; }
+  .map-node.center .map-node-icon { font-size: 22px; }
+  .map-node.center .map-node-name { font-size: 10px; }
+
+  /* Terapias */
+  .therapy-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .therapy-card { padding: 14px 10px; }
+  .therapy-icon { font-size: 20px; margin-bottom: 6px; }
+  .therapy-name { font-size: 10px; }
+  .therapy-type { font-size: 8px; }
+
+  /* Plano */
+  .plan-day { gap: 10px; }
+  .plan-day-num { width: 30px; height: 30px; font-size: 12px; }
+  .plan-day-icon { font-size: 16px; }
+  .plan-day-content strong { font-size: 12px; }
+  .plan-day-content span { font-size: 11px; }
+
+  /* Data */
+  .date-row { flex-direction: column; }
+  .date-row select { padding: 14px 12px; }
+
+  /* Preço */
+  .price-big { font-size: 62px; }
+  .price-big sup { font-size: 22px; margin-top: 13px; }
+
+  /* CTA voz — sem <br> forçado */
+  .cta-voice { font-size: 16px; }
+  .cta-voice br { display: none; }
+
+  /* Alert strip — texto não estoura */
+  .alert-strip { padding: 12px 14px; }
+  .alert-strip span { font-size: 10px; letter-spacing: 1px; }
+
+  /* Subtext — <br> some em mobile */
+  .subtext br { display: none; }
+
+  /* Trust bar wrap sem overflow */
+  .trust-bar { gap: 12px; }
+  .trust-item { font-size: 10px; }
+
+  /* Botões */
+  .btn-next { padding: 18px 24px; font-size: 12px; letter-spacing: 1.5px; }
+  .btn-main { padding: 20px 24px; font-size: 12px; letter-spacing: 1.5px; }
+
+  /* Reveal card */
+  .reveal-card-big { width: 150px; height: 250px; }
+
+  /* Garantia */
+  .guarantee { padding: 18px 16px; }
+  .guar-seal { width: 64px; height: 64px; font-size: 7px; }
+
+  /* Offer list */
+  .offer-list li { font-size: 13px; gap: 10px; }
+}
+
+/* Telas muito pequenas */
+@media(max-width:360px){
+  .headline { font-size: 26px; }
+  .t-card { width: 64px; height: 108px; }
+  .t-card-art svg { width: 38px; height: 52px; }
+  .map-container { height: 250px; }
+  .map-node-circle { width: 60px; height: 60px; }
+  .map-node.center .map-node-circle { width: 72px; height: 72px; }
+  .therapy-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- CANVAS -->
+<canvas id="particles-canvas"></canvas>
+<div class="nebula"></div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-logo">✦ Tarô Sagrado</div>
+  <div class="topbar-step" id="step-label"></div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-outer" id="progress-outer" style="display:none">
+  <div class="progress-inner" id="progress-inner" style="width:0%"></div>
+</div>
+
+<div class="quiz-wrap">
+
+<!-- ════════════════════════════════════════════
+     TELA 1 — PORTAL DE ENTRADA
+════════════════════════════════════════════ -->
+<div id="s1" class="screen active">
+  <div class="eyebrow">Portal de Entrada · Leitura Gratuita</div>
+  <h1 class="headline">Você não chegou aqui<br><em>por acidente.</em></h1>
+  <div class="divider"></div>
+  <p class="subtext">
+    Há uma força que guia certas mulheres a este momento exato —<br>
+    quando a dor ficou grande demais para ignorar<br>
+    e a alma pede por uma resposta.
+  </p>
+  <div class="ritual-box">
+    <p>
+      Esta não é uma leitura comum. O que você vai vivenciar nos próximos minutos é uma <strong>sessão ritualística de tarô</strong> — onde cada carta que você escolher vai revelar, com precisão que pode te surpreender, o que está bloqueado na sua energia agora.
+    </p>
+  </div>
+  <p class="subtext" style="margin-top:24px;">
+    Não existe resposta certa. Existe apenas <strong>o que a sua intuição escolhe.</strong><br>
+    E ela já sabe. Ela sempre soube.
+  </p>
+  <button class="btn-next" onclick="goTo('s2')">
+    Iniciar Minha Leitura Sagrada ✦
+  </button>
+  <p style="text-align:center;font-size:12px;color:var(--text-dim);margin-top:16px;letter-spacing:1px;">
+    Gratuito · 5 minutos · Sua intuição guia
+  </p>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TELA 2 — DOR DECLARADA
+════════════════════════════════════════════ -->
+<div id="s2" class="screen">
+  <div class="eyebrow">Primeira Revelação</div>
+  <h2 class="headline">Antes das cartas,<br><em>uma pergunta honesta.</em></h2>
+  <p class="subtext">
+    As cartas só conseguem falar quando sabem onde procurar.<br>
+    Qual área da sua vida está mais <strong>pesada e bloqueada</strong> agora?
+  </p>
+  <div class="options">
+    <button class="opt-btn" onclick="selectDor('financeiro')">
+      <span class="opt-icon">💸</span>
+      <div class="opt-body">
+        <strong>Minhas finanças e a falta de dinheiro</strong>
+        Trabalho sem parar mas o dinheiro nunca sobra. As dívidas pesam e parece que algo invisível continua me travando na mesma situação, por mais que eu tente.
+      </div>
+    </button>
+    <button class="opt-btn" onclick="selectDor('esgotamento')">
+      <span class="opt-icon">🌀</span>
+      <div class="opt-body">
+        <strong>Meu cansaço e esgotamento profundo</strong>
+        Estou exausta de um jeito que não passa com sono. Sinto um nó no peito, insônia, um peso que não tem explicação racional. Parece que estou carregando o mundo sozinha.
+      </div>
+    </button>
+    <button class="opt-btn" onclick="selectDor('relacoes')">
+      <span class="opt-icon">💔</span>
+      <div class="opt-body">
+        <strong>Meus relacionamentos e a solidão</strong>
+        Me sinto incompreendida, invisível — mesmo rodeada de pessoas. Ou estou presa em vínculos que me drenam mais do que me nutrem.
+      </div>
+    </button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TELA 3 — VALIDAÇÃO DA DOR
+════════════════════════════════════════════ -->
+<div id="s3" class="screen">
+  <div class="eyebrow">As Cartas Percebem</div>
+  <h2 class="headline">As cartas já sentiram<br><em>a sua energia.</em></h2>
+  <div class="divider"></div>
+  <div class="visceral-box">
+    <p class="visceral-q" id="visceral-q">...</p>
+    <div class="options" style="max-width:100%">
+      <button class="opt-btn" onclick="selectValidacao('sim')">
+        <span class="opt-icon">✓</span>
+        <div class="opt-body">
+          <strong>Sim, é exatamente isso.</strong>
+          Quando li essas palavras senti que estava descrevendo a minha vida.
+        </div>
+      </button>
+      <button class="opt-btn" onclick="selectValidacao('as-vezes')">
+        <span class="opt-icon">〜</span>
+        <div class="opt-body">
+          <strong>Às vezes — especialmente quando a pressão aumenta.</strong>
+          Não é sempre, mas quando aparece é muito intenso.
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TELA 4 — ESCOLHA DA PRIMEIRA CARTA
+════════════════════════════════════════════ -->
+<div id="s4" class="screen">
+  <div class="eyebrow">A Primeira Carta</div>
+  <h2 class="headline">Feche os olhos.<br><em>Respire fundo. Três vezes.</em></h2>
+  <p class="subtext">
+    Quando abrir, olhe para as cinco cartas abaixo.<br>
+    Não analise. Não pense. Deixe sua mão se mover sozinha.<br>
+    <strong>Qual carta chama você?</strong>
+  </p>
+  <div class="cards-spread" id="spread-s4">
+    <!-- geradas por JS -->
+  </div>
+  <p style="text-align:center;font-size:12px;color:var(--text-dim);font-style:italic;">
+    Confie. Sua intuição não mente.
+  </p>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TELA 5 — REVELAÇÃO DA PRIMEIRA CARTA
+════════════════════════════════════════════ -->
+<div id="s5" class="screen">
+  <div class="eyebrow">A Carta Fala</div>
+  <h2 class="headline">Você escolheu<br><em id="chosen-card-1-name">...</em></h2>
+  <div class="divider"></div>
+  <div class="reveal-wrap">
+    <div class="reveal-card-big" id="reveal-card-1">
+      <!-- svg injetado por JS -->
+    </div>
+    <div class="reveal-card-name" id="reveal-card-1-name">...</div>
+    <div class="reveal-card-sub" id="reveal-card-1-sub">...</div>
+  </div>
+  <div class="ritual-box" id="reveal-card-1-text">
+    <p>...</p>
+  </div>
+  <button class="btn-next" onclick="goTo('s6')">
+    Continuar a Leitura ✦
+  </button>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TELA 6 — APROFUNDAMENTO (PERGUNTA 2)
+════════════════════════════════════════════ -->
+<div id="s6" class="screen">
+  <div class="eyebrow">Indo Mais Fundo</div>
+  <h2 class="headline">As cartas precisam<br><em>entender a raiz.</em></h2>
+  <p class="subtext" id="s6-sub">
+    A sua primeira carta revelou o tema dominante.<br>
+    Agora precisamos encontrar <strong>onde esse bloqueio nasceu.</strong>
+  </p>
+  <div class="options" id="s6-opts"></div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TELA 7 — SEGUNDA CARTA
+════════════════════════════════════════════ -->
+<div id="s7" class="screen">
+  <div class="eyebrow">A Segunda Carta</div>
+  <h2 class="headline">Uma nova escolha.<br><em>Uma camada mais profunda.</em></h2>
+  <p class="subtext">
+    Esta carta vai revelar algo que talvez você nunca tenha conseguido<br>
+    colocar em palavras antes. <strong>Deixe a intuição guiar.</strong>
+  </p>
+  <div class="cards-spread" id="spread-s7"></div>
+  <p style="text-align:center;font-size:12px;color:var(--text-dim);font-style:italic;">
+    Não existe escolha errada. Só existe a sua.
+  </p>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TELA 8 — REVELAÇÃO CARTA 2
+════════════════════════════════════════════ -->
+<div id="s8" class="screen">
+  <div class="eyebrow">A Raiz É Revelada</div>
+  <h2 class="headline">Esta carta toca<br><em>no que dói de verdade.</em></h2>
+  <div class="divider"></div>
+  <div class="reveal-wrap">
+    <div class="reveal-card-big" id="reveal-card-2"></div>
+    <div class="reveal-card-name" id="reveal-card-2-name">...</div>
+    <div class="reveal-card-sub" id="reveal-card-2-sub">...</div>
+  </div>
+  <div class="ritual-box" id="reveal-card-2-text"><p>...</p></div>
+  <button class="btn-next" onclick="goTo('s9')">
+    Ver a Terceira e Última Carta ✦
+  </button>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TELA 9 — TERCEIRA CARTA (DESEJO OCULTO)
+════════════════════════════════════════════ -->
+<div id="s9" class="screen">
+  <div class="eyebrow">A Carta Final</div>
+  <h2 class="headline">Uma última escolha.<br><em>A mais importante.</em></h2>
+  <div class="ritual-box" style="margin-bottom:36px">
+    <p>Esta carta não mostra o que você quer. Ela revela <strong>o que a sua alma mais precisa receber</strong> — aquilo que, quando chegar, vai mudar tudo. Respire. Feche os olhos um momento.</p>
+  </div>
+  <div class="cards-spread" id="spread-s9">
+    <div class="t-card" onclick="selectCard3('raiz')">
+      <div class="t-card-face">
+        <div class="t-card-pattern"></div>
+        <div class="t-card-art">
+          <svg viewBox="0 0 72 100" fill="none">
+            <line x1="36" y1="8" x2="36" y2="92" stroke="#c9960a" stroke-width="0.8"/>
+            <line x1="36" y1="92" x2="18" y2="68" stroke="#c9960a" stroke-width="0.6"/>
+            <line x1="36" y1="92" x2="54" y2="68" stroke="#c9960a" stroke-width="0.6"/>
+            <line x1="36" y1="70" x2="20" y2="52" stroke="#c9960a" stroke-width="0.5"/>
+            <line x1="36" y1="70" x2="52" y2="52" stroke="#c9960a" stroke-width="0.5"/>
+            <circle cx="36" cy="12" r="7" stroke="#c9960a" stroke-width="0.7" fill="none"/>
+            <circle cx="36" cy="12" r="2.5" fill="#c9960a" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="t-card-name">A Raiz Segura</div>
+        <div class="t-card-tap">Tocar</div>
+      </div>
+    </div>
+    <div class="t-card" onclick="selectCard3('olhar')">
+      <div class="t-card-face">
+        <div class="t-card-pattern"></div>
+        <div class="t-card-art">
+          <svg viewBox="0 0 72 100" fill="none">
+            <ellipse cx="36" cy="48" rx="24" ry="14" stroke="#c9960a" stroke-width="0.8" fill="none"/>
+            <circle cx="36" cy="48" r="6" stroke="#c9960a" stroke-width="0.6" fill="none"/>
+            <circle cx="36" cy="48" r="2" fill="#c9960a" opacity="0.6"/>
+            <path d="M12 48 Q4 32 12 18" stroke="#c9960a" stroke-width="0.4" fill="none"/>
+            <path d="M60 48 Q68 32 60 18" stroke="#c9960a" stroke-width="0.4" fill="none"/>
+            <line x1="36" y1="74" x2="36" y2="94" stroke="#c9960a" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div class="t-card-name">O Olhar que Vê</div>
+        <div class="t-card-tap">Tocar</div>
+      </div>
+    </div>
+    <div class="t-card" onclick="selectCard3('manha')">
+      <div class="t-card-face">
+        <div class="t-card-pattern"></div>
+        <div class="t-card-art">
+          <svg viewBox="0 0 72 100" fill="none">
+            <path d="M14 60 A22 22 0 0 1 58 60" stroke="#c9960a" stroke-width="0.8" fill="none"/>
+            <line x1="36" y1="38" x2="36" y2="20" stroke="#c9960a" stroke-width="0.8"/>
+            <line x1="22" y1="44" x2="10" y2="36" stroke="#c9960a" stroke-width="0.6"/>
+            <line x1="50" y1="44" x2="62" y2="36" stroke="#c9960a" stroke-width="0.6"/>
+            <line x1="16" y1="58" x2="4" y2="58" stroke="#c9960a" stroke-width="0.6"/>
+            <line x1="56" y1="58" x2="68" y2="58" stroke="#c9960a" stroke-width="0.6"/>
+            <circle cx="36" cy="60" r="10" stroke="#c9960a" stroke-width="0.7" fill="none"/>
+            <circle cx="36" cy="60" r="3" fill="#c9960a" opacity="0.35"/>
+            <path d="M14 78 Q26 90 36 93 Q46 90 58 78" stroke="#c9960a" stroke-width="0.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="t-card-name">A Manhã Nova</div>
+        <div class="t-card-tap">Tocar</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TELA 10 — REVELAÇÃO CARTA 3
+════════════════════════════════════════════ -->
+<div id="s10" class="screen">
+  <div class="eyebrow">O Desejo Revelado</div>
+  <h2 class="headline">Sua alma escolheu.<br><em>E ela foi precisa.</em></h2>
+  <div class="divider"></div>
+  <div class="reveal-wrap">
+    <div class="reveal-card-big" id="reveal-card-3"></div>
+    <div class="reveal-card-name" id="reveal-card-3-name">...</div>
+    <div class="reveal-card-sub" id="reveal-card-3-sub">...</div>
+  </div>
+  <div class="ritual-box" id="reveal-card-3-text"><p>...</p></div>
+  <button class="btn-next" onclick="goTo('s11')">
+    Ver o Que as Três Cartas Revelam Juntas ✦
+  </button>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TELA 11 — DATA DE NASCIMENTO
+════════════════════════════════════════════ -->
+<div id="s11" class="screen">
+  <div class="eyebrow">Calibração Final</div>
+  <h2 class="headline">Quase lá.<br><em>Uma última calibração.</em></h2>
+  <p class="subtext">
+    As três cartas criaram o mapa da sua energia.<br>
+    Para calcular o seu <strong>Diagnóstico Energético completo</strong> com precisão,<br>
+    precisamos da frequência da sua data de nascimento.
+  </p>
+  <div class="date-wrap">
+    <span class="date-label">Sua data de nascimento</span>
+    <div class="date-row">
+      <select id="b-day">
+        <option value="">Dia</option>
+      </select>
+      <select id="b-month">
+        <option value="">Mês</option>
+        <option>Janeiro</option><option>Fevereiro</option><option>Março</option>
+        <option>Abril</option><option>Maio</option><option>Junho</option>
+        <option>Julho</option><option>Agosto</option><option>Setembro</option>
+        <option>Outubro</option><option>Novembro</option><option>Dezembro</option>
+      </select>
+      <select id="b-year">
+        <option value="">Ano</option>
+      </select>
+    </div>
+  </div>
+  <div style="text-align:center">
+    <button class="btn-next" style="max-width:460px" onclick="startLoading()">
+      Calcular Meu Diagnóstico Energético ✦
+    </button>
+    <p style="font-size:11px;color:var(--text-dim);margin-top:12px;letter-spacing:1px;">🔒 Seus dados são privados e protegidos</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TELA 12 — LOADING
+════════════════════════════════════════════ -->
+<div id="s12" class="screen">
+  <div class="loading-screen">
+    <div class="loading-sigil">
+      <svg viewBox="0 0 120 120" fill="none">
+        <circle class="sigil-outer" cx="60" cy="60" r="56" stroke="#c9960a" stroke-width="0.6" stroke-dasharray="6 4"/>
+        <polygon class="sigil-outer" points="60,8 108,36 108,84 60,112 12,84 12,36" stroke="#c9960a" stroke-width="0.5" fill="none"/>
+        <circle class="sigil-inner" cx="60" cy="60" r="32" stroke="#c9960a" stroke-width="0.8" fill="none"/>
+        <polygon class="sigil-inner" points="60,30 82,46 74,72 46,72 38,46" stroke="#c9960a" stroke-width="0.5" fill="none"/>
+        <circle class="sigil-core" cx="60" cy="60" r="10" stroke="#c9960a" stroke-width="1" fill="none"/>
+        <circle cx="60" cy="60" r="3" fill="#c9960a" opacity="0.7"/>
+      </svg>
+    </div>
+    <div class="loading-msgs" id="loading-msg">Conectando as três cartas ao seu campo áurico...</div>
+    <div class="loading-bar-wrap">
+      <div class="loading-bar-fill" id="l-bar"></div>
+    </div>
+    <div class="loading-pct" id="l-pct">0%</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TELA 13 — MAPA ANIMADO + OFERTA
+════════════════════════════════════════════ -->
+<div id="s13" class="screen">
+
+  <div class="alert-strip">
+    <span>⚠️ Seu Mapa Energético está pronto — Não É Sua Culpa</span>
+  </div>
+
+  <div class="eyebrow">Seu Mapa Sagrado de Cura</div>
+  <h2 class="headline" id="r-headline">As três cartas revelaram<br><em>o seu caminho completo</em></h2>
+  <div class="divider"></div>
+  <p class="subtext" style="margin-bottom:8px">
+    Este é o seu <strong style="color:var(--cream)">Mapa Energético Pessoal</strong> — construído pelas suas próprias escolhas.<br>
+    Cada nó revela uma camada do que está te bloqueando agora.
+  </p>
+
+  <!-- ═══ MAPA ANIMADO ═══ -->
+  <div class="map-container" id="map-container">
+    <canvas id="map-canvas"></canvas>
+    <div class="map-nodes" id="map-nodes"></div>
+  </div>
+
+  <p style="text-align:center;font-size:12px;color:var(--text-dim);font-style:italic;margin-top:8px;margin-bottom:40px">
+    🔒 Os detalhes completos de cada nó estão no seu Mapa de Cura desbloqueado
+  </p>
+
+  <!-- ═══ DIAGNÓSTICO ═══ -->
+  <div class="diagnosis-panel">
+    <div class="diag-label">✦ Diagnóstico Energético Personalizado ✦</div>
+    <div class="diag-name" id="r-diag-name">...</div>
+    <div class="diag-body" id="r-diag-body">...</div>
+  </div>
+
+  <!-- ═══ PREVIEW BLOQUEADA ═══ -->
+  <div class="preview-section">
+    <p id="r-preview">...</p>
+  </div>
+  <p class="preview-hint">↑ Sua leitura completa e o plano de cura continuam abaixo...</p>
+
+  <!-- ═══ TERAPIAS PREVIEW ═══ -->
+  <div class="therapies-preview">
+    <div class="section-title">✦ O que está dentro da sua Plataforma de Cura ✦</div>
+    <div class="therapy-grid" id="therapy-grid">
+      <!-- preenchido por JS -->
+    </div>
+    <div class="therapy-lock">
+      <div class="lock-icon">🔒</div>
+      <p>+ <strong id="therapy-count">27</strong> terapias e práticas adicionais desbloqueadas após a ativação</p>
+    </div>
+  </div>
+
+  <!-- ═══ PLANO 30 DIAS PREVIEW ═══ -->
+  <div class="plan-preview">
+    <div class="plan-header">
+      <div class="plan-badge">BÔNUS EXCLUSIVO</div>
+      <h3 class="plan-title">Seu Mapa de Cura de 30 Dias</h3>
+      <p class="plan-sub">Personalizado para a sua combinação exata de cartas e bloqueios</p>
+    </div>
+    <div class="plan-days" id="plan-days">
+      <!-- preenchido por JS -->
+    </div>
+    <div class="plan-blur">
+      <div class="plan-blur-text">
+        <div class="lock-icon">🔒</div>
+        <p>Dias 8 a 30 desbloqueados após a ativação</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DEPOIMENTOS ═══ -->
+  <div class="testi-section">
+    <div class="section-title">Mulheres que seguiram o Mapa de Cura</div>
+
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Quando vi meu mapa pela primeira vez fiquei paralisada. Era como se alguém tivesse desenhado a minha vida inteira numa imagem. Cada nó descrevia exatamente o que eu sentia mas nunca conseguia colocar em palavras. No <strong>14º dia do plano</strong> recebi uma proposta de trabalho que não esperava. No 21º, quitei uma dívida que tinha há 3 anos."</p>
+      <div class="testi-author">Claudia R. · 47 anos · São Paulo, SP</div>
+    </div>
+
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Era completamente cética. Mas o mapa descreveu meu bloqueio financeiro com uma precisão que me deu arrepios. Segui o plano de 30 dias — um dia de cada vez, cada terapia no momento certo. Uma dívida de <strong>R$ 4.847,00</strong> foi resolvida de uma forma que ainda não consigo explicar."</p>
+      <div class="testi-author">Mariana S. · 52 anos · Belo Horizonte, MG</div>
+    </div>
+
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"O que me surpreendeu foi a <strong>plataforma de terapias</strong>. Nunca imaginei que existiam tantas formas de trabalhar o mesmo bloqueio. Cada uma chegou no momento certo do meu plano. Hoje, 2 meses depois, durmo em paz. A leveza que eu buscava chegou de um jeito que não esperava."</p>
+      <div class="testi-author">Fernanda L. · 44 anos · Porto Alegre, RS</div>
+    </div>
+  </div>
+
+  <!-- ═══ OFERTA ═══ -->
+  <div class="offer-wrap">
+    <h3 class="offer-headline">
+      Seu mapa está pronto.<br>
+      <em>Falta só ativar o caminho.</em>
+    </h3>
+    <p class="offer-sub">
+      Tudo que foi revelado pelas suas cartas — o diagnóstico completo, a plataforma de +30 terapias e o seu Mapa de Cura de 30 dias — está esperando por você.
+    </p>
+
+    <div class="offer-panel">
+      <div class="offer-label">✦ Mapa Sagrado de Cura — Acesso Completo ✦</div>
+
+      <ul class="offer-list">
+        <li><strong style="color:var(--gold-light)">Mapa Energético Completo Desbloqueado</strong> — todos os nós revelados com a interpretação profunda de cada carta e como elas se interconectam na sua história</li>
+        <li><strong style="color:var(--gold-light)">Plataforma de +30 Terapias e Práticas</strong> — biblioteca completa com meditações, rituais, frequências sonoras, práticas somáticas e receitas energéticas para tratar cada camada do seu bloqueio</li>
+        <li><strong style="color:var(--gold-light)">Mapa de Cura de 30 Dias Personalizado</strong> — qual terapia executar em cada dia, na ordem certa, de acordo com a sua combinação exata de cartas e bloqueios (valor: R$297)</li>
+        <li>Áudio da Leitura Completa das suas 3 Cartas — 30 minutos de interpretação profunda e personalizada</li>
+        <li>Ritual em 432Hz calibrado para o seu bloqueio específico — ouça antes de dormir</li>
+        <li>Acesso à área de membros — atualizações e novas terapias adicionadas mensalmente</li>
+      </ul>
+
+      <!-- BONUS BOX -->
+      <div class="bonus-box">
+        <div class="bonus-label">🎁 BÔNUS — Apenas para quem ativar hoje</div>
+        <div class="bonus-title">Mapa de Cura de 30 Dias</div>
+        <p class="bonus-desc">Um plano dia a dia, montado especificamente para a sua combinação de cartas — dizendo exatamente qual terapia usar em cada momento da sua jornada de dissolução do bloqueio.</p>
+        <div class="bonus-value">Valor: <span>R$297</span> → Incluso gratuitamente</div>
+      </div>
+
+      <div class="price-wrap">
+        <div class="price-from">Valor total dos itens: R$647</div>
+        <div class="price-big"><sup>R$</sup>37</div>
+        <div class="price-note">Pagamento único · Acesso imediato · Sem mensalidades</div>
+      </div>
+
+      <div class="cta-voice">
+        "Sim — quero ativar meu Mapa Sagrado de Cura<br>e começar meu plano de 30 dias ainda hoje."
+      </div>
+
+      <button class="btn-main" onclick="goCheckout()">
+        Ativar Meu Mapa de Cura Agora — R$37 ✦
+      </button>
+      <p class="btn-sub">
+        ⚡ Acesso imediato · 🔒 Pagamento 100% seguro<br>
+        Aparece discreto no extrato · Sem assinatura mensal
+      </p>
+
+      <div class="guarantee">
+        <div class="guar-seal">GARANTIA<br>BLINDADA<br>90 DIAS</div>
+        <div class="guar-text">
+          <strong>Você não precisa decidir agora. Apenas diga talvez.</strong><br>
+          Acesse o Mapa. Siga o plano de 30 dias. Se não sentir que foi construído especificamente para você — exijo que peça seu dinheiro de volta. Sem perguntas. Sem burocracia. O risco é inteiramente meu.
+        </div>
+      </div>
+
+      <div class="trust-bar">
+        <div class="trust-item"><em>🔒</em> Criptografia SSL</div>
+        <div class="trust-item"><em>✦</em> Discreto no extrato</div>
+        <div class="trust-item"><em>⚡</em> Acesso imediato</div>
+        <div class="trust-item"><em>↩</em> 90 dias garantidos</div>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:11px;color:var(--text-dim);line-height:1.9;margin-top:28px;">
+      Esta leitura tem fins de reflexão e autoconhecimento.<br>
+      Não possui afiliação com nenhuma religião específica.
+    </p>
+  </div>
+
+</div><!-- /s13 -->
+
+</div><!-- /quiz-wrap -->
+
+<script>
+// ════════════════════════════════════════
+// PIXEL — eventos estratégicos no funil
+// ════════════════════════════════════════
+function pixelEvent(event, params){
+  if(typeof fbq === 'undefined') return;
+  if(params) fbq('track', event, params);
+  else fbq('track', event);
+}
+function pixelCustom(event, params){
+  if(typeof fbq === 'undefined') return;
+  fbq('trackCustom', event, params || {});
+}
+
+// ════════════════════════════════════════
+// CHECKOUT
+// ════════════════════════════════════════
+const CHECKOUT_URL = 'https://pay.hotmart.com/T104851108S?checkoutMode=10';
+function goCheckout(){
+  pixelEvent('InitiateCheckout', { currency: 'BRL', value: 37.00, content_name: 'Mapa Sagrado de Cura' });
+  window.open(CHECKOUT_URL, '_blank');
+}
+
+// ════════════════════════════════════════
+// INIT — populate selects, no document.write
+// ════════════════════════════════════════
+(function initSelects(){
+  const dayEl = document.getElementById('b-day');
+  const yearEl = document.getElementById('b-year');
+  for(let i=1;i<=31;i++){
+    const o = document.createElement('option');
+    o.value = o.textContent = i;
+    dayEl.appendChild(o);
+  }
+  for(let y=1944;y<=2006;y++){
+    const o = document.createElement('option');
+    o.value = o.textContent = y;
+    yearEl.appendChild(o);
+  }
+})();
+
+// ════════════════════════════════════════
+// PARTICLES
+// ════════════════════════════════════════
+(function(){
+  const canvas = document.getElementById('particles-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  const isMobile = window.innerWidth < 640;
+  const COUNT = isMobile ? 35 : 80;
+
+  function resize(){
+    const dpr = window.devicePixelRatio || 1;
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.scale(dpr, dpr);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for(let i=0;i<COUNT;i++){
+    particles.push({
+      x: Math.random()*window.innerWidth,
+      y: Math.random()*window.innerHeight,
+      r: Math.random()*1.2+0.2,
+      a: Math.random()*Math.PI*2,
+      speed: Math.random()*0.003+0.001,
+      opacity: Math.random()*0.5+0.1,
+      gold: Math.random() > 0.7
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p => {
+      p.a += p.speed;
+      p.x += Math.sin(p.a)*0.3;
+      p.y -= 0.15;
+      if(p.y < -5) p.y = H+5;
+      if(p.x < -5) p.x = W+5;
+      if(p.x > W+5) p.x = -5;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = p.gold
+        ? `rgba(201,150,10,${p.opacity})`
+        : `rgba(255,255,255,${p.opacity*0.6})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════
+const ST = {
+  dor: null,
+  validacao: null,
+  card1: null,
+  layer2: null,
+  card2: null,
+  card3: null,
+  birth: null
+};
+
+const TOTAL_SCREENS = 13;
+
+// ════════════════════════════════════════
+// NAVIGATION
+// ════════════════════════════════════════
+function goTo(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  // iOS smooth scroll can jitter during transitions; use instant scroll then let CSS handle the screen animation
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  const n = parseInt(id.replace('s',''));
+  updateUI(n);
+}
+
+function updateUI(n){
+  const bar = document.getElementById('progress-outer');
+  const fill = document.getElementById('progress-inner');
+  const lbl = document.getElementById('step-label');
+
+  if(n===1){ bar.style.display='none'; lbl.textContent=''; return; }
+  bar.style.display='block';
+  const pct = Math.round(((n-2)/(TOTAL_SCREENS-2))*100);
+  fill.style.width = Math.min(pct,100)+'%';
+  lbl.textContent = `Etapa ${n-1} de ${TOTAL_SCREENS-1}`;
+}
+
+// ════════════════════════════════════════
+// CARDS DATA
+// ════════════════════════════════════════
+const CARDS = {
+  lua: {
+    name: 'A Lua',
+    sub: 'O Inconsciente Revelado',
+    svg: `<svg viewBox="0 0 72 100" fill="none"><path d="M54 18 A28 28 0 1 1 54 82 A18 18 0 1 0 54 18Z" stroke="#c9960a" stroke-width="0.8" fill="none"/><circle cx="28" cy="50" r="4" stroke="#c9960a" stroke-width="0.5" fill="none"/><circle cx="40" cy="34" r="2.5" stroke="#c9960a" stroke-width="0.4" fill="none"/><circle cx="36" cy="64" r="3" stroke="#c9960a" stroke-width="0.4" fill="none"/><line x1="36" y1="86" x2="36" y2="96" stroke="#c9960a" stroke-width="0.5"/></svg>`,
+    text: 'A Lua revela o que está escondido sob a superfície — emoções, medos e padrões que operam nas sombras da sua consciência. Ela indica que o bloqueio que você sente não está no mundo externo, mas em camadas mais profundas do seu ser, esperando para ser iluminado.'
+  },
+  sol: {
+    name: 'O Sol',
+    sub: 'A Força Bloqueada',
+    svg: `<svg viewBox="0 0 72 100" fill="none"><circle cx="36" cy="46" r="18" stroke="#c9960a" stroke-width="0.8" fill="none"/><circle cx="36" cy="46" r="7" stroke="#c9960a" stroke-width="0.5" fill="none"/><line x1="36" y1="12" x2="36" y2="22" stroke="#c9960a" stroke-width="0.8"/><line x1="36" y1="70" x2="36" y2="80" stroke="#c9960a" stroke-width="0.8"/><line x1="6" y1="46" x2="16" y2="46" stroke="#c9960a" stroke-width="0.8"/><line x1="56" y1="46" x2="66" y2="46" stroke="#c9960a" stroke-width="0.8"/><line x1="15" y1="25" x2="22" y2="32" stroke="#c9960a" stroke-width="0.6"/><line x1="50" y1="60" x2="57" y2="67" stroke="#c9960a" stroke-width="0.6"/><line x1="57" y1="25" x2="50" y2="32" stroke="#c9960a" stroke-width="0.6"/><line x1="22" y1="60" x2="15" y2="67" stroke="#c9960a" stroke-width="0.6"/></svg>`,
+    text: 'O Sol representa sua energia vital e seu poder criador — mas algo está impedindo que essa luz brilhe em toda sua intensidade. Há uma força imensa dentro de você que foi sendo contida ao longo dos anos. A pergunta que o Sol traz é: o que ou quem te ensinou que você não podia ocupar todo o espaço que merece?'
+  },
+  estrela: {
+    name: 'A Estrela',
+    sub: 'A Esperança que Persiste',
+    svg: `<svg viewBox="0 0 72 100" fill="none"><polygon points="36,8 42,28 62,28 46,40 52,60 36,48 20,60 26,40 10,28 30,28" stroke="#c9960a" stroke-width="0.8" fill="none"/><circle cx="36" cy="36" r="4" stroke="#c9960a" stroke-width="0.5" fill="none"/><line x1="36" y1="68" x2="36" y2="92" stroke="#c9960a" stroke-width="0.5"/><line x1="24" y1="80" x2="48" y2="80" stroke="#c9960a" stroke-width="0.4"/></svg>`,
+    text: 'A Estrela é a carta da esperança que sobrevive a tudo — mesmo quando tudo parece perdido, algo dentro de você continua acreditando que existe um caminho. Essa fagulha não é ingenuidade. É um sinal de que sua energia vital ainda está buscando o alinhamento que vai mudar tudo.'
+  },
+  torre: {
+    name: 'A Torre',
+    sub: 'O Ciclo que Precisa Terminar',
+    svg: `<svg viewBox="0 0 72 100" fill="none"><rect x="22" y="28" width="28" height="56" stroke="#c9960a" stroke-width="0.8" fill="none"/><polygon points="22,28 36,10 50,28" stroke="#c9960a" stroke-width="0.8" fill="none"/><rect x="30" y="60" width="12" height="24" stroke="#c9960a" stroke-width="0.5" fill="none"/><line x1="10" y1="20" x2="22" y2="30" stroke="#c9960a" stroke-width="0.6"/><line x1="62" y1="20" x2="50" y2="30" stroke="#c9960a" stroke-width="0.6"/><circle cx="36" cy="18" r="4" stroke="#c9960a" stroke-width="0.5" fill="none"/></svg>`,
+    text: 'A Torre não traz medo — traz liberação. Ela aparece quando uma estrutura antiga já não sustenta mais quem você está se tornando. O desconforto que você sente não é sinal de que algo está errado. É o sinal de que algo muito maior está prestes a emergir.'
+  },
+  mundo: {
+    name: 'O Mundo',
+    sub: 'A Virada que se Aproxima',
+    svg: `<svg viewBox="0 0 72 100" fill="none"><ellipse cx="36" cy="50" rx="26" ry="38" stroke="#c9960a" stroke-width="0.8" fill="none"/><ellipse cx="36" cy="50" rx="10" ry="38" stroke="#c9960a" stroke-width="0.4" fill="none"/><line x1="10" y1="50" x2="62" y2="50" stroke="#c9960a" stroke-width="0.4"/><circle cx="36" cy="50" r="5" stroke="#c9960a" stroke-width="0.5" fill="none"/><circle cx="36" cy="50" r="1.5" fill="#c9960a" opacity="0.6"/></svg>`,
+    text: 'O Mundo é a carta da conclusão e da chegada. Ela indica que um ciclo longo está chegando ao fim — e que do outro lado existe uma versão da sua vida que você mal consegue imaginar agora. A energia do Mundo não promete facilidade. Ela promete que a chegada valerá cada passo do caminho.'
+  }
+};
+
+// LAYER 2 OPTIONS
+const L2 = {
+  financeiro: [
+    { id:'peso', label:'O peso veio da família', desc:'Cresci vendo escassez e aprendi que dinheiro é difícil, que prosperar é para outros.' },
+    { id:'sabotagem', label:'Algo me sabota por dentro', desc:'Quando estou prestes a dar um passo diferente, algo me faz recuar. Como se eu não merecesse.' },
+    { id:'merecimento', label:'No fundo, não acredito que mereço', desc:'Por mais que eu tente, existe uma voz que diz que a prosperidade não é para mim.' }
+  ],
+  esgotamento: [
+    { id:'corpo', label:'Perdi o contato com meu próprio corpo', desc:'Vivo na cabeça, gerenciando tudo. O corpo manda sinais que aprendi a ignorar.' },
+    { id:'entrega', label:'Cuido de todos menos de mim', desc:'Sou a última da lista. Sempre dei tudo para os outros — e fui esquecendo de mim.' },
+    { id:'proposito', label:'Perdi o senso de para onde estou indo', desc:'Sei que vim para mais do que isso. Mas o cansaço cobre tudo e não consigo ver o caminho.' }
+  ],
+  relacoes: [
+    { id:'ferida', label:'Carrego uma ferida que não cicatrizou', desc:'Houve uma traição, um abandono — uma dor que ficou sem nome e ainda age nas sombras.' },
+    { id:'voz', label:'Aprendi a me calar para não incomodar', desc:'Engolindo o que sinto há tanto tempo que já não sei direito o que sinto.' },
+    { id:'elo', label:'Estou num vínculo que me drena', desc:'Há uma relação que consome muito mais do que nutre. Mas não sei como sair — ou se devo.' }
+  ]
+};
+
+// LAYER 2 CARD SETS
+const L2CARDS = {
+  financeiro: ['lua','estrela','torre'],
+  esgotamento: ['sol','lua','mundo'],
+  relacoes: ['estrela','torre','mundo']
+};
+
+// CARD 3 DATA
+const C3DATA = {
+  raiz: {
+    name:'A Raiz Segura', sub:'Paz, Estabilidade, Chão',
+    svg:`<svg viewBox="0 0 72 100" fill="none"><line x1="36" y1="8" x2="36" y2="92" stroke="#c9960a" stroke-width="0.8"/><line x1="36" y1="92" x2="16" y2="66" stroke="#c9960a" stroke-width="0.6"/><line x1="36" y1="92" x2="56" y2="66" stroke="#c9960a" stroke-width="0.6"/><line x1="36" y1="70" x2="18" y2="50" stroke="#c9960a" stroke-width="0.5"/><line x1="36" y1="70" x2="54" y2="50" stroke="#c9960a" stroke-width="0.5"/><circle cx="36" cy="12" r="8" stroke="#c9960a" stroke-width="0.7" fill="none"/><circle cx="36" cy="12" r="3" fill="#c9960a" opacity="0.5"/></svg>`,
+    text:'A Raiz Segura revela que o que sua alma mais busca é estabilidade — uma fundação que não balance. Paz que não depende de ninguém. A certeza, mesmo que seja só por uma noite, de que está tudo bem.'
+  },
+  olhar: {
+    name:'O Olhar que Vê', sub:'Reconhecimento, Valor, Presença',
+    svg:`<svg viewBox="0 0 72 100" fill="none"><ellipse cx="36" cy="48" rx="24" ry="14" stroke="#c9960a" stroke-width="0.8" fill="none"/><circle cx="36" cy="48" r="6" stroke="#c9960a" stroke-width="0.6" fill="none"/><circle cx="36" cy="48" r="2" fill="#c9960a" opacity="0.6"/><path d="M12 48 Q4 30 12 16" stroke="#c9960a" stroke-width="0.4" fill="none"/><path d="M60 48 Q68 30 60 16" stroke="#c9960a" stroke-width="0.4" fill="none"/><line x1="36" y1="74" x2="36" y2="94" stroke="#c9960a" stroke-width="0.5"/></svg>`,
+    text:'O Olhar que Vê diz que o que você mais precisa é ser vista — de verdade. Não o papel que você representa. Você. Sua dor, seu esforço, sua força. O reconhecimento que você nunca pediu mas sempre mereceu.'
+  },
+  manha: {
+    name:'A Manhã Nova', sub:'Recomeço, Leveza, Nova Identidade',
+    svg:`<svg viewBox="0 0 72 100" fill="none"><path d="M14 60 A22 22 0 0 1 58 60" stroke="#c9960a" stroke-width="0.8" fill="none"/><line x1="36" y1="38" x2="36" y2="18" stroke="#c9960a" stroke-width="0.8"/><line x1="22" y1="44" x2="8" y2="34" stroke="#c9960a" stroke-width="0.6"/><line x1="50" y1="44" x2="64" y2="34" stroke="#c9960a" stroke-width="0.6"/><line x1="14" y1="58" x2="2" y2="58" stroke="#c9960a" stroke-width="0.6"/><line x1="58" y1="58" x2="70" y2="58" stroke="#c9960a" stroke-width="0.6"/><circle cx="36" cy="60" r="10" stroke="#c9960a" stroke-width="0.7" fill="none"/><path d="M14 78 Q24 90 36 93 Q48 90 58 78" stroke="#c9960a" stroke-width="0.5" fill="none"/></svg>`,
+    text:'A Manhã Nova é a carta mais corajosa. Ela diz que você está pronta para recomeçar — não do zero, mas do lugar certo. Uma nova identidade. Uma versão de você que não carrega mais o peso dos ciclos que se repetiram por tanto tempo.'
+  }
+};
+
+// ════════════════════════════════════════
+// RESULT DATA
+// ════════════════════════════════════════
+const RESULTS = {
+  financeiro: {
+    headline: 'Suas cartas revelaram um <em>Bloqueio de Prosperidade Profundo</em>',
+    diagName: 'Síndrome de Fuga Energética — Campo Financeiro',
+    diagBody: `<p>A combinação das suas três cartas revela algo que programas convencionais de manifestação nunca conseguiram te mostrar: a razão pela qual o dinheiro escorrega não é falta de esforço — <strong>é uma inflamação energética invisível no seu campo de prosperidade.</strong></p>
+    <p>Pesquisas em bioenergética mostram que quando o centro energético financeiro está em "modo de fuga", o subconsciente começa a repeler oportunidades de abundância antes mesmo que a consciência as perceba. É como tentar encher um balde com um furo no fundo. <em>Você trabalha. Você tenta. O resultado sempre volta ao mesmo ponto.</em></p>
+    <p>Mas há algo que as suas cartas revelaram com especificidade: esse bloqueio <strong>não começou em você.</strong> Ele foi absorvido — de padrões familiares, de crenças instaladas antes que você tivesse escolha, de anos trabalhando mais para provar que merecia o que os outros recebiam sem esforço.</p>
+    <p>A boa notícia que as cartas trazem é esta: <strong>o que foi instalado pode ser dissolvido.</strong> Sua data de nascimento nos deu as coordenadas energéticas exatas para isso.</p>`,
+    preview: `"Há uma voz muito antiga dentro de você — mais velha do que sua memória consciente — que ainda acredita que prosperidade é para os outros. Que você precisa trabalhar o dobro para merecer metade. Que se as coisas melhorarem demais, algo vai dar errado. Essa voz não é a verdade. É um programa. E programas podem ser reescritos. As suas cartas mostram que você chegou ao momento exato em que essa reescrita se torna possível — e necessária. Do outro lado desse bloqueio existe uma versão da sua vida que você quase não consegue imaginar agora. Mas ela existe. E está muito mais próxima do que parece..."`
+  },
+  esgotamento: {
+    headline: 'Suas cartas revelaram um <em>Colapso do Campo Vital</em>',
+    diagName: 'Síndrome de Drenagem Energética Profunda',
+    diagBody: `<p>As suas três cartas juntas revelam algo que médicos convencionais raramente identificam: seu cansaço não é físico. <strong>É uma fuga de energia vital que acontece no nível do campo áurico</strong> — e que nenhum descanso consegue restaurar completamente, porque a fonte do vazamento nunca foi tratada.</p>
+    <p>O nó no peito que você sente. A insônia que aparece mesmo quando você está exausta. O cansaço que não passa com sono. <em>Esses não são sintomas de fraqueza.</em> São mensagens de uma parte de você que foi silenciada há tempo demais — e que está usando o corpo como último recurso para ser ouvida.</p>
+    <p>As suas cartas revelaram também o padrão por trás do esgotamento: <strong>você aprendeu que seu valor está no quanto você dá.</strong> No quanto você aguenta. No quanto você sacrifica sem reclamar. E por isso você nunca parou — até o corpo parar por você.</p>
+    <p>Mas há algo que as cartas mostram com clareza: <strong>esse padrão pode ser dissolvido.</strong> Não com mais esforço — com frequência. Com o protocolo energético específico calculado a partir das suas escolhas e da sua data de nascimento.</p>`,
+    preview: `"Existe uma versão de você que existia antes de tudo isso. Antes de aprender a carregar o mundo nas costas. Antes de colocar as necessidades de todos na frente das suas. Essa versão sabia descansar sem culpa. Ria sem esforço. Acordava com uma leveza que você quase não lembra mais como é. Ela não desapareceu. Ela está bloqueada por uma densidade energética que pode ser dissolvida. As suas cartas mostram o caminho exato — e ele não exige que você seja mais forte do que já é. Exige apenas que você pare de lutar sozinha..."`
+  },
+  relacoes: {
+    headline: 'Suas cartas revelaram uma <em>Ferida de Vínculo Profunda</em>',
+    diagName: 'Síndrome de Bloqueio de Conexão',
+    diagBody: `<p>A combinação das suas três cartas identifica um padrão que se repete nos seus relacionamentos — não por acaso, mas porque <strong>há uma ferida energética não resolvida que está criando o mesmo roteiro repetidamente.</strong> É o que chamamos de Bloqueio de Conexão: uma proteção que o campo energético aprendeu a ativar em resposta a uma dor real.</p>
+    <p>O resultado? Você sente amor — mas não consegue recebê-lo completamente. Você dá tudo — mas raramente recebe na mesma medida. Você está presente para todos — mas sente uma solidão que ninguém ao redor parece conseguir preencher. <em>Não é porque você é difícil de amar. É porque o bloqueio está repelindo exatamente o que você mais precisa.</em></p>
+    <p>As suas cartas revelaram também algo sobre a origem: <strong>houve um momento — ou uma série de momentos</strong> — em que você aprendeu que ser vista era perigoso. Que precisar era fraqueza. Que a versão mais segura de você era a que precisava de menos.</p>
+    <p>Mas esse aprendizado antigo pode ser dissolvido. <strong>Sua data de nascimento nos deu a frequência energética exata</strong> para iniciar esse processo de restauração.</p>`,
+    preview: `"Você dá tanto — em silêncio, sem pedir nada em troca. Mas há uma parte de você que está exausta de ser a que sempre cuida sem ser cuidada. A que está sempre presente mas se sente invisível. A que ama de um jeito enorme e ainda assim acorda sozinha dentro de si mesma. Essa exaustão relacional tem uma raiz energética específica — e ela não é defeito seu. É uma proteção que um dia fez sentido e agora está custando caro demais. As suas cartas mostram que você está no momento exato em que essa proteção pode finalmente ser solta. E o que fica no lugar dela vai surpreender você..."`
+  }
+};
+
+// ════════════════════════════════════════
+// SCREEN 2 — DOR
+// ════════════════════════════════════════
+function selectDor(dor){
+  ST.dor = dor;
+  // Lead: usuária sinalizou intenção clara ao declarar a dor
+  pixelEvent('Lead', { content_name: 'Dor Declarada', content_category: dor });
+  pixelCustom('QuizDorSelecionada', { dor });
+  const vq = {
+    financeiro: `"As cartas detectaram uma <strong>densidade energética intensa em torno do campo financeiro</strong>. Há um peso que não é só de dívidas — é uma sensação de que, por mais que você se esforce, algo invisível continua te travando no mesmo lugar. Você sente com frequência um <strong>nó no peito quando pensa em dinheiro</strong> — aquela angústia que aparece nas madrugadas quando o silêncio obriga a encarar as contas?"`,
+    esgotamento: `"As cartas identificaram uma <strong>fuga de energia vital no seu campo áurico</strong> — um vazamento que nenhum descanso consegue restaurar completamente. Você sente com frequência um <strong>cansaço profundo que não passa mesmo depois de dormir</strong>? Uma exaustão que vai além do físico, como se algo estivesse te drenando por dentro 24 horas por dia?"`,
+    relacoes: `"As cartas perceberam uma <strong>ferida energética nos seus vínculos</strong> — uma dor que aprendeu a funcionar nas sombras, moldando silenciosamente como você se conecta com as pessoas que ama. Você sente com frequência um <strong>peso no peito quando pensa nos seus relacionamentos</strong> — aquela sensação de dar muito e receber pouco, de estar sempre presente mas raramente ser vista?"`
+  };
+  document.getElementById('visceral-q').innerHTML = vq[dor] || vq.financeiro;
+  goTo('s3');
+}
+
+// ════════════════════════════════════════
+// SCREEN 3 — VALIDACAO
+// ════════════════════════════════════════
+function selectValidacao(v){
+  ST.validacao = v;
+  buildSpread('spread-s4', ['lua','sol','estrela','torre','mundo'], selectCard1);
+  goTo('s4');
+}
+
+// ════════════════════════════════════════
+// BUILD SPREAD
+// ════════════════════════════════════════
+function buildSpread(containerId, cardKeys, callback){
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  cardKeys.forEach((key, i) => {
+    const c = CARDS[key];
+    const div = document.createElement('div');
+    div.className = 't-card';
+    div.style.animationDelay = `${i*0.1}s`;
+    div.innerHTML = `
+      <div class="t-card-face">
+        <div class="t-card-pattern"></div>
+        <div class="t-card-art">${c.svg}</div>
+        <div class="t-card-name">${c.name}</div>
+        <div class="t-card-tap">Tocar</div>
+      </div>`;
+    div.onclick = () => {
+      document.querySelectorAll(`#${containerId} .t-card`).forEach(x=>x.classList.remove('chosen'));
+      div.classList.add('chosen');
+      setTimeout(()=>callback(key), 700);
+    };
+    el.appendChild(div);
+  });
+}
+
+// ════════════════════════════════════════
+// CARD 1 SELECTED
+// ════════════════════════════════════════
+function selectCard1(key){
+  ST.card1 = key;
+  // Usuária chegou na carta 1 — engajamento profundo
+  pixelCustom('QuizCarta1', { carta: key, dor: ST.dor });
+  const c = CARDS[key];
+  document.getElementById('chosen-card-1-name').textContent = c.name;
+  document.getElementById('reveal-card-1').innerHTML = c.svg.replace('viewBox="0 0 72 100"','viewBox="0 0 72 100" width="100" height="140"');
+  document.getElementById('reveal-card-1-name').textContent = c.name;
+  document.getElementById('reveal-card-1-sub').textContent = c.sub;
+  document.getElementById('reveal-card-1-text').innerHTML = `<p>${c.text}</p>`;
+
+  // Build L2 options
+  const opts = L2[ST.dor] || L2.financeiro;
+  const s6opts = document.getElementById('s6-opts');
+  s6opts.innerHTML = '';
+  opts.forEach(o => {
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.innerHTML = `<span class="opt-icon">◆</span><div class="opt-body"><strong>${o.label}</strong>${o.desc}</div>`;
+    btn.onclick = () => selectL2(o.id);
+    s6opts.appendChild(btn);
+  });
+
+  goTo('s5');
+}
+
+// ════════════════════════════════════════
+// LAYER 2
+// ════════════════════════════════════════
+function selectL2(id){
+  ST.layer2 = id;
+  const keys = L2CARDS[ST.dor] || ['lua','estrela','torre'];
+  buildSpread('spread-s7', keys, selectCard2);
+  goTo('s7');
+}
+
+// ════════════════════════════════════════
+// CARD 2 SELECTED
+// ════════════════════════════════════════
+function selectCard2(key){
+  ST.card2 = key;
+  const c = CARDS[key];
+  document.getElementById('reveal-card-2').innerHTML = c.svg.replace('viewBox="0 0 72 100"','viewBox="0 0 72 100" width="100" height="140"');
+  document.getElementById('reveal-card-2-name').textContent = c.name;
+  document.getElementById('reveal-card-2-sub').textContent = c.sub;
+  document.getElementById('reveal-card-2-text').innerHTML = `<p>${c.text}</p>`;
+  goTo('s8');
+}
+
+// ════════════════════════════════════════
+// CARD 3
+// ════════════════════════════════════════
+function selectCard3(key){
+  ST.card3 = key;
+  document.querySelectorAll('#spread-s9 .t-card').forEach(x=>x.classList.remove('chosen'));
+  event.currentTarget.classList.add('chosen');
+  const c = C3DATA[key];
+  setTimeout(()=>{
+    document.getElementById('reveal-card-3').innerHTML = c.svg.replace('viewBox="0 0 72 100"','viewBox="0 0 72 100" width="100" height="140"');
+    document.getElementById('reveal-card-3-name').textContent = c.name;
+    document.getElementById('reveal-card-3-sub').textContent = c.sub;
+    document.getElementById('reveal-card-3-text').innerHTML = `<p>${c.text}</p>`;
+    goTo('s10');
+  }, 700);
+}
+
+// ════════════════════════════════════════
+// LOADING
+// ════════════════════════════════════════
+function startLoading(){
+  // Todas as cartas escolhidas + data de nascimento = lead altamente qualificado
+  pixelCustom('QuizCompleto', {
+    dor: ST.dor,
+    carta1: ST.card1,
+    carta2: ST.card2,
+    carta3: ST.card3
+  });
+  pixelEvent('ViewContent', {
+    content_name: 'Diagnóstico Energético',
+    content_category: ST.dor,
+    currency: 'BRL',
+    value: 37.00
+  });
+  goTo('s12');
+  const msgs = [
+    'Conectando as três cartas ao seu campo áurico...',
+    'Analisando a frequência da sua data de nascimento...',
+    'Identificando a origem do bloqueio energético...',
+    'Calculando o padrão de fuga de energia vital...',
+    'Cruzando as escolhas com o mapa astral...',
+    'Preparando seu diagnóstico personalizado...',
+    'Leitura concluída com sucesso. ✦'
+  ];
+  const bar = document.getElementById('l-bar');
+  const pct = document.getElementById('l-pct');
+  const msg = document.getElementById('loading-msg');
+  let p=0, mi=0;
+  const iv = setInterval(()=>{
+    p += Math.random()*5+2;
+    if(p>100) p=100;
+    bar.style.width=p+'%';
+    pct.textContent=Math.floor(p)+'%';
+    const ni = Math.floor((p/100)*msgs.length);
+    if(ni!==mi && ni<msgs.length){
+      mi=ni;
+      msg.style.opacity='0';
+      setTimeout(()=>{ msg.textContent=msgs[mi]; msg.style.opacity='1'; },400);
+    }
+    if(p>=100){ clearInterval(iv); setTimeout(buildResult,800); }
+  },250);
+}
+
+// ════════════════════════════════════════
+// THERAPIES DATA
+// ════════════════════════════════════════
+const THERAPIES = {
+  financeiro: [
+    { icon:'🎵', name:'Frequência 432Hz', type:'Áudio Sagrado', locked:false },
+    { icon:'🌿', name:'Ritual de Limpeza de Escassez', type:'Prática Energética', locked:false },
+    { icon:'✍️', name:'Escrita Terapêutica de Abundância', type:'Journaling', locked:false },
+    { icon:'🧘', name:'Meditação do Merecimento', type:'Meditação Guiada', locked:true },
+    { icon:'🕯️', name:'Ritual das Velas Douradas', type:'Ritual Sagrado', locked:true },
+    { icon:'💎', name:'Cristaloterapia Financeira', type:'Terapia Vibracional', locked:true },
+  ],
+  esgotamento: [
+    { icon:'🌊', name:'Frequência de Restauração Vital', type:'Áudio Sagrado', locked:false },
+    { icon:'🌸', name:'Prática de Auto-Compaixão', type:'Prática Somática', locked:false },
+    { icon:'🌙', name:'Ritual do Sono Profundo', type:'Ritual Noturno', locked:false },
+    { icon:'🫁', name:'Respiração de Recarregamento', type:'Técnica Respiratória', locked:true },
+    { icon:'🌺', name:'Aromaterapia Energizante', type:'Terapia Sensorial', locked:true },
+    { icon:'🧿', name:'Limpeza de Campo Áurico', type:'Terapia Energética', locked:true },
+  ],
+  relacoes: [
+    { icon:'💞', name:'Frequência de Reconexão', type:'Áudio Sagrado', locked:false },
+    { icon:'🕊️', name:'Ritual de Perdão e Liberação', type:'Prática Emocional', locked:false },
+    { icon:'🌹', name:'Meditação do Coração Aberto', type:'Meditação Guiada', locked:false },
+    { icon:'🪞', name:'Espelho de Auto-Amor', type:'Prática de Identidade', locked:true },
+    { icon:'📿', name:'Mantras de Vínculo Saudável', type:'Prática Sonora', locked:true },
+    { icon:'✨', name:'Ritual de Atração de Conexões', type:'Ritual Sagrado', locked:true },
+  ]
+};
+
+// ════════════════════════════════════════
+// PLAN DATA
+// ════════════════════════════════════════
+const PLANS = {
+  financeiro: [
+    { day:'1-3', icon:'🌱', title:'Reconhecimento e Nomeação', desc:'Identificar e nomear o padrão de escassez sem julgamento' },
+    { day:'4-5', icon:'🎵', title:'Frequência 432Hz', desc:'Primeira sessão de limpeza do campo financeiro enquanto dorme' },
+    { day:'6-7', icon:'✍️', title:'Escrita Terapêutica', desc:'Carta para a versão de você que vai prosperar' },
+  ],
+  esgotamento: [
+    { day:'1-3', icon:'🌊', title:'Diagnóstico do Esgotamento', desc:'Mapear onde a energia está sendo drenada e por quem' },
+    { day:'4-5', icon:'🌙', title:'Ritual do Sono Restaurador', desc:'Protocolo noturno para restaurar o campo vital' },
+    { day:'6-7', icon:'🌸', title:'Prática de Auto-Compaixão', desc:'Primeiro passo para se incluir na sua própria lista de prioridades' },
+  ],
+  relacoes: [
+    { day:'1-3', icon:'🕊️', title:'Nomeação da Ferida', desc:'Reconhecer o padrão relacional sem se culpar por ele' },
+    { day:'4-5', icon:'💞', title:'Frequência de Reconexão', desc:'Sessão sonora para abrir o campo relacional bloqueado' },
+    { day:'6-7', icon:'🌹', title:'Meditação do Coração Aberto', desc:'Criar segurança interna para receber conexão genuína' },
+  ]
+};
+
+// ════════════════════════════════════════
+// BUILD RESULT
+// ════════════════════════════════════════
+function buildResult(){
+  const dor = ST.dor || 'financeiro';
+  const r = RESULTS[dor];
+  const c1 = CARDS[ST.card1] || CARDS.lua;
+  const c2 = CARDS[ST.card2] || CARDS.estrela;
+  const c3d = C3DATA[ST.card3] || C3DATA.raiz;
+  const l2opts = L2[dor] || L2.financeiro;
+  const l2item = l2opts.find(x=>x.id===ST.layer2) || l2opts[0];
+
+  // Fill texts
+  document.getElementById('r-headline').innerHTML = r.headline;
+  document.getElementById('r-diag-name').textContent = r.diagName;
+  document.getElementById('r-diag-body').innerHTML = r.diagBody;
+  document.getElementById('r-preview').textContent = r.preview;
+
+  // Build therapies
+  const tg = document.getElementById('therapy-grid');
+  tg.innerHTML = '';
+  const therapies = THERAPIES[dor] || THERAPIES.financeiro;
+  document.getElementById('therapy-count').textContent = 30 - therapies.length;
+  therapies.forEach(t => {
+    const d = document.createElement('div');
+    d.className = 'therapy-card' + (t.locked ? ' locked' : '');
+    d.innerHTML = `<div class="therapy-icon">${t.icon}</div>
+    <div class="therapy-name">${t.name}</div>
+    <div class="therapy-type">${t.type}</div>`;
+    tg.appendChild(d);
+  });
+
+  // Build plan preview
+  const pd = document.getElementById('plan-days');
+  pd.innerHTML = '';
+  const plan = PLANS[dor] || PLANS.financeiro;
+  plan.forEach((p,i) => {
+    const d = document.createElement('div');
+    d.className = 'plan-day';
+    d.innerHTML = `
+      <div class="plan-day-num">${p.day}</div>
+      <div class="plan-day-icon">${p.icon}</div>
+      <div class="plan-day-content">
+        <strong>${p.title}</strong>
+        <span>${p.desc}</span>
+      </div>`;
+    pd.appendChild(d);
+    setTimeout(()=>d.classList.add('visible'), 200 + i*200);
+  });
+
+  goTo('s13');
+
+  // Build animated map after screen is visible
+  setTimeout(()=>buildMap(c1, c2, c3d, l2item, dor), 400);
+}
+
+// ════════════════════════════════════════
+// ANIMATED MAP
+// ════════════════════════════════════════
+function buildMap(c1, c2, c3d, l2item, dor){
+  const container = document.getElementById('map-container');
+  const canvas = document.getElementById('map-canvas');
+  const nodesEl = document.getElementById('map-nodes');
+
+  function render(){
+    const W = container.offsetWidth;
+    const H = container.offsetHeight;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+
+    const dorIcons = { financeiro:'💰', esgotamento:'🌀', relacoes:'💔' };
+    const dorLabels = { financeiro:'Bloqueio Financeiro', esgotamento:'Campo Vital', relacoes:'Vínculos' };
+
+    // Node positions — percentages for responsiveness
+    const nodesDef = [
+      { px:0.50, py:0.44, icon: dorIcons[dor], name: dorLabels[dor], label:'Bloqueio Central', center:true, locked:false },
+      { px:0.15, py:0.18, icon:'🌙', name: c1.name, label:'1ª Carta', center:false, locked:false },
+      { px:0.85, py:0.18, icon:'⭐', name: c2.name, label:'2ª Carta', center:false, locked:false },
+      { px:0.18, py:0.80, icon:'🔮', name: l2item.label.split(' ').slice(0,3).join(' '), label:'Raiz do Bloqueio', center:false, locked:true },
+      { px:0.82, py:0.80, icon:'✨', name: c3d.name, label:'Desejo da Alma', center:false, locked:false },
+    ];
+    const nodes = nodesDef.map(n => ({...n, x: n.px*W, y: n.py*H}));
+
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, W, H);
+
+    function drawLine(x1,y1,x2,y2,progress,gold){
+      const ex = x1 + (x2-x1)*progress;
+      const ey = y1 + (y2-y1)*progress;
+      ctx.beginPath();
+      ctx.moveTo(x1,y1);
+      ctx.lineTo(ex,ey);
+      ctx.strokeStyle = gold
+        ? `rgba(201,150,10,${0.35*progress})`
+        : `rgba(100,120,180,${0.2*progress})`;
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4,6]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    let lineProgress = 0;
+    const lineInterval = setInterval(()=>{
+      lineProgress = Math.min(lineProgress + 0.025, 1);
+      ctx.clearRect(0, 0, W, H);
+      const cx = nodes[0].x, cy = nodes[0].y;
+      nodes.slice(1).forEach((n,i) => drawLine(cx,cy,n.x,n.y,lineProgress, i!==2));
+      if(lineProgress >= 1) clearInterval(lineInterval);
+    }, 30);
+
+    // DOM nodes
+    nodesEl.innerHTML = '';
+    nodes.forEach((n,i) => {
+      const div = document.createElement('div');
+      div.className = 'map-node' + (n.center?' center':'');
+      div.style.left = n.x + 'px';
+      div.style.top = n.y + 'px';
+      div.innerHTML = `
+        <div class="map-node-circle">
+          ${n.locked ? '<div class="map-node-locked">🔒</div>' : ''}
+          <div class="map-node-icon">${n.icon}</div>
+          <div class="map-node-name">${n.name}</div>
+        </div>
+        <div class="map-node-label">${n.label}</div>`;
+      nodesEl.appendChild(div);
+      setTimeout(()=>div.classList.add('visible'), 300 + i*300);
+    });
+  }
+
+  render();
+
+  // Redraw on resize / orientation change
+  let resizeTimer;
+  window.addEventListener('resize', ()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(render, 200);
+  });
+}
+</script>
+</body>
+</html>

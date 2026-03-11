@@ -1,0 +1,13 @@
+{
+  "name": "quiz-tarot-deploy",
+  "version": "1.0.0",
+  "description": "Quiz de Tarô Sagrado - Leitura Personalizada",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["tarot", "quiz", "leitura"],
+  "author": "",
+  "license": "ISC"
+}
