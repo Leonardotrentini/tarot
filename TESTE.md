@@ -10,7 +10,7 @@
 ### Opção 2: Manualmente
 1. Abra o terminal na pasta do projeto
 2. Execute: `npm start` ou `node server.js`
-3. Acesse: http://localhost:3000/index.html
+3. Acesse: http://localhost:3000/index.html (ES-419)
 
 ## 📋 Checklist de Testes
 

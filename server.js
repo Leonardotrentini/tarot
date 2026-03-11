@@ -45,7 +45,6 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => {
   console.log(`\n✨ Servidor rodando em http://localhost:${PORT}`);
-  console.log(`📄 Página principal: http://localhost:${PORT}/index.html`);
-  console.log(`📄 Versão espanhola: http://localhost:${PORT}/index-es.html`);
+  console.log(`📄 Página principal (ES-419): http://localhost:${PORT}/index.html`);
   console.log(`\nPressione Ctrl+C para parar o servidor\n`);
 });

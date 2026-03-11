@@ -1,6 +1,6 @@
-# Quiz de Tarô Sagrado
+# Tarot Sagrado (ES-419)
 
-Aplicação web interativa de leitura de tarô personalizada com quiz interativo.
+Aplicação web interativa de leitura de tarot personalizada com quiz interativo (espanhol — América Latina).
 
 ## 🚀 Como executar localmente
 
@@ -20,15 +20,13 @@ npm start
 ```
 
 3. Acesse no navegador:
-- Versão Português: http://localhost:3000/index.html
-- Versão Espanhol: http://localhost:3000/index-es.html
+- Página principal (ES-419): http://localhost:3000/index.html
 
 ## 📁 Estrutura do Projeto
 
 ```
 quiz-deploy/
-├── index.html          # Versão em português
-├── index-es.html       # Versão em espanhol
+├── index.html          # Versão em espanhol (es-419)
 ├── server.js           # Servidor HTTP simples
 ├── package.json        # Configuração do projeto
 └── README.md           # Este arquivo
