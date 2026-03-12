@@ -1839,7 +1839,7 @@ function pixelCustom(event, params){
 // ════════════════════════════════════════
 // CHECKOUT
 // ════════════════════════════════════════
-const CHECKOUT_URL = 'https://pay.hotmart.com/T104851108S?checkoutMode=10';
+const CHECKOUT_URL = 'https://v0-guiaespiritual.vercel.app/';
 function goCheckout(){
   pixelEvent('InitiateCheckout', { currency: 'USD', value: 37.00, content_name: 'Mapa Sagrado de Sanación' });
   window.open(CHECKOUT_URL, '_blank');
