@@ -1780,7 +1780,7 @@ body {
 
       <div class="price-wrap">
         <div class="price-from">Valor total de los elementos: $647</div>
-        <div class="price-big"><sup>$</sup>37</div>
+        <div class="price-big"><sup>$</sup>7</div>
         <div class="price-note">Pago único · Acceso inmediato · Sin mensualidades</div>
       </div>
 
@@ -1789,7 +1789,7 @@ body {
       </div>
 
       <button class="btn-main" onclick="goCheckout()">
-        Activar Mi Mapa de Sanación Ahora — $37 ✦
+        Activar Mi Mapa de Sanación Ahora — $7 ✦
       </button>
       <p class="btn-sub">
         ⚡ Acceso inmediato · 🔒 Pago 100% seguro<br>
@@ -1841,7 +1841,7 @@ function pixelCustom(event, params){
 // ════════════════════════════════════════
 const CHECKOUT_URL = 'https://pay.hotmart.com/T104851108S?checkoutMode=10';
 function goCheckout(){
-  pixelEvent('InitiateCheckout', { currency: 'USD', value: 37.00, content_name: 'Mapa Sagrado de Sanación' });
+  pixelEvent('InitiateCheckout', { currency: 'USD', value: 7.00, content_name: 'Mapa Sagrado de Sanación' });
   window.open(CHECKOUT_URL, '_blank');
 }
 
@@ -2207,7 +2207,7 @@ function startLoading(){
     content_name: 'Diagnóstico Energético',
     content_category: ST.dor,
     currency: 'USD',
-    value: 37.00
+    value: 7.00
   });
   goTo('s12');
   const msgs = [
