@@ -25,7 +25,11 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=25790031400693148&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Preload para carregamento otimizado -->
+<link rel="preconnect" href="https://play.tynk.ai">
+<link rel="dns-prefetch" href="https://play.tynk.ai">
+<link rel="prerender" href="https://play.tynk.ai/p/b0ee90f2-d51b-4108-a438-3f5e00d952e6">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cinzel:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --navy: #080f24;
@@ -990,6 +994,9 @@ body {
   0%,100% { transform: scale(1); opacity:0.5; }
   50% { transform: scale(1.08); opacity:1; }
 }
+@keyframes lockShake {
+  0%,100%{transform:rotate(0)} 20%{transform:rotate(-8deg)} 40%{transform:rotate(8deg)} 60%{transform:rotate(-4deg)} 80%{transform:rotate(4deg)}
+}
 .map-node-circle:hover {
   border-color: rgba(201,150,10,0.7);
   box-shadow: 0 0 40px rgba(201,150,10,0.25);
@@ -1318,6 +1325,499 @@ body {
   .map-node-circle { width: 60px; height: 60px; }
   .map-node.center .map-node-circle { width: 72px; height: 72px; }
   .therapy-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── ESTILOS DO ÚLTIMO BLOCO (BACKUP) ── */
+.alert-bar {
+  background: linear-gradient(135deg, #1a0808, #2a0f0f);
+  border: 1px solid rgba(224,85,85,0.3);
+  padding: 14px 20px;
+  text-align: center;
+  margin-bottom: 48px;
+  margin-top: 40px;
+}
+.alert-bar span {
+  font-family: 'Cinzel', serif;
+  font-size: 11px; letter-spacing: 3px;
+  color: #e05555; text-transform: uppercase;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.alert-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #e05555; animation: pulse 1.5s ease infinite;
+  flex-shrink: 0;
+}
+
+.crossroads {
+  text-align: center; padding: 48px 0 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 48px;
+}
+.crossroads-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 4px; color: #c9a84c; text-transform: uppercase;
+  margin-bottom: 24px; opacity: .8;
+}
+.crossroads-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5vw, 42px); font-weight: 300; line-height: 1.3;
+  color: #f0e6d0; margin-bottom: 32px;
+}
+.crossroads-headline em {
+  font-style: italic; color: #e8c97a;
+}
+.crossroads-body {
+  font-size: 16px; line-height: 1.85; color: rgba(240,230,208,0.45);
+  max-width: 520px; margin: 0 auto 32px;
+}
+.crossroads-body strong { color: #f0e6d0; font-weight: 500; }
+
+.two-paths {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin: 32px 0;
+}
+.path {
+  padding: 20px 16px; border: 1px solid;
+  text-align: center;
+}
+.path-left {
+  border-color: rgba(224,85,85,0.2);
+  background: rgba(224,85,85,0.04);
+}
+.path-right {
+  border-color: rgba(201,168,76,0.25);
+  background: rgba(201,168,76,0.05);
+}
+.path-icon { font-size: 24px; margin-bottom: 10px; }
+.path-label {
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;
+}
+.path-left .path-label { color: #e05555; opacity: .7; }
+.path-right .path-label { color: #c9a84c; }
+.path-text { font-size: 13px; line-height: 1.6; color: rgba(240,230,208,0.45); }
+.path-right .path-text { color: rgba(240,230,208,0.7); }
+
+.handholding {
+  background: rgba(201,168,76,0.05);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-left: 3px solid #c9a84c;
+  padding: 28px 28px;
+  margin-bottom: 48px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(17px, 2.5vw, 21px);
+  font-style: italic; line-height: 1.8;
+  color: #f0e6d0;
+}
+.handholding strong {
+  font-style: normal; color: #e8c97a; font-weight: 600;
+}
+
+.mockup-section {
+  margin-bottom: 56px;
+}
+.section-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 4px; color: #c9a84c; text-transform: uppercase;
+  text-align: center; margin-bottom: 32px; opacity: .8;
+  display: flex; align-items: center; gap: 16px;
+}
+.section-eyebrow::before, .section-eyebrow::after {
+  content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.2);
+}
+
+.mockup-container {
+  position: relative;
+  padding: 32px 24px 40px;
+  background: linear-gradient(135deg, #0d1428, #0a0e1e);
+  border: 1px solid rgba(201,168,76,0.2);
+  animation: glowPulse 4s ease infinite;
+  margin-bottom: 8px;
+}
+
+.mapa-cover {
+  background: linear-gradient(135deg, #1a1035, #0d0820);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 28px 24px;
+  text-align: center; margin-bottom: 24px;
+  position: relative; overflow: hidden;
+}
+.mapa-cover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(201,168,76,0.05) 50%, transparent 70%);
+  background-size: 200% 200%;
+  animation: shimmer 4s linear infinite;
+}
+.mapa-cover-stars {
+  font-size: 11px; letter-spacing: 6px; color: #c9a84c;
+  opacity: .6; margin-bottom: 12px;
+}
+.mapa-cover-title {
+  font-family: 'Cinzel', serif; font-size: 13px;
+  letter-spacing: 3px; color: #e8c97a; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.mapa-cover-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 4vw, 28px); font-style: italic;
+  color: #f0e6d0; line-height: 1.3;
+}
+
+.produto-items {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.produto-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 14px 14px; display: flex; gap: 12px; align-items: flex-start;
+}
+.produto-item-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.produto-item-title {
+  font-size: 12px; font-weight: 500; color: #f0e6d0;
+  margin-bottom: 3px; line-height: 1.4;
+}
+.produto-item-sub { font-size: 11px; color: rgba(240,230,208,0.45); line-height: 1.5; }
+.produto-item-value {
+  font-family: 'Cinzel', serif; font-size: 9px;
+  color: #c9a84c; letter-spacing: 1px; margin-top: 4px;
+  opacity: .7;
+}
+
+.dia1-section { margin-bottom: 56px; }
+
+.dia1-card {
+  background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+  border: 1px solid rgba(201,168,76,0.25);
+  padding: 32px 28px;
+  position: relative; overflow: hidden;
+}
+.dia1-card::before {
+  content: '✦ DESBLOQUEADO — PARA VOCÊ ✦';
+  position: absolute; top: 0; left: 0; right: 0;
+  background: rgba(201,168,76,0.12);
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 3px; color: #c9a84c; text-transform: uppercase;
+  padding: 8px; text-align: center;
+}
+.dia1-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3);
+  padding: 6px 14px; margin-top: 24px; margin-bottom: 20px;
+}
+.dia1-badge span {
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 2px; color: #c9a84c; text-transform: uppercase;
+}
+.dia1-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 4vw, 30px); font-weight: 600;
+  color: #f0e6d0; margin-bottom: 8px;
+}
+.dia1-subtitle {
+  font-size: 13px; color: #e8c97a; margin-bottom: 24px;
+  font-style: italic; opacity: .8;
+}
+.dia1-instrucoes {
+  background: rgba(0,0,0,0.3); border-left: 2px solid #c9a84c;
+  padding: 20px 20px; margin-bottom: 20px;
+}
+.dia1-instrucoes p {
+  font-size: 15px; line-height: 1.9; color: #f0e6d0;
+}
+.dia1-instrucoes p + p { margin-top: 12px; }
+.dia1-instrucoes strong { color: #e8c97a; font-weight: 500; }
+.dia1-tempo {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: rgba(240,230,208,0.45); margin-top: 16px;
+}
+.dia1-tempo::before {
+  content: '⏱'; font-size: 16px;
+}
+
+.dias-bloqueados {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+  margin-top: 16px;
+}
+.dia-lock {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 12px 10px; text-align: center;
+  position: relative; cursor: default;
+}
+.dia-lock-num {
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 1px; color: rgba(255,255,255,0.2);
+  margin-bottom: 6px;
+}
+.dia-lock-icon {
+  font-size: 16px; opacity: .3;
+  display: block;
+}
+.dia-lock:hover .dia-lock-icon { animation: lockShake .4s ease; }
+.dias-bloqueados-label {
+  text-align: center; font-size: 12px; color: rgba(240,230,208,0.45);
+  margin-top: 12px; font-style: italic;
+}
+
+.value-stack { margin-bottom: 48px; }
+
+.stack-items { margin-bottom: 24px; }
+.stack-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.stack-item:last-child { border-bottom: none; }
+.stack-item-left { display: flex; align-items: center; gap: 12px; }
+.stack-item-icon { font-size: 18px; }
+.stack-item-name { font-size: 14px; color: #f0e6d0; line-height: 1.4; }
+.stack-item-sub { font-size: 11px; color: rgba(240,230,208,0.45); margin-top: 2px; }
+.stack-item-price {
+  font-family: 'Cinzel', serif; font-size: 12px;
+  color: rgba(240,230,208,0.45); text-decoration: line-through; opacity: .5;
+  flex-shrink: 0;
+}
+
+.stack-total {
+  background: rgba(201,168,76,0.05);
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 20px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.stack-total-label {
+  font-family: 'Cinzel', serif; font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase; color: rgba(240,230,208,0.45);
+}
+.stack-total-value {
+  font-family: 'Cormorant Garamond', serif; font-size: 22px;
+  color: rgba(240,230,208,0.45); text-decoration: line-through; opacity: .5;
+}
+
+.depos { margin-bottom: 56px; }
+.depo {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 24px 24px; margin-bottom: 12px;
+}
+.depo.depo-video {
+  padding: 0;
+  overflow: hidden;
+  background: #000;
+  border-color: rgba(201,168,76,0.2);
+}
+.depo-stars { color: #c9a84c; font-size: 12px; margin-bottom: 12px; letter-spacing: 2px; }
+.depo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px; font-style: italic; line-height: 1.8;
+  color: #f0e6d0; margin-bottom: 14px;
+}
+.depo-text strong { color: #e8c97a; font-style: normal; }
+.depo-meta {
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase; color: rgba(240,230,208,0.45);
+}
+
+.cta-section {
+  text-align: center; margin-bottom: 16px;
+}
+.cta-pre {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 3.5vw, 28px); font-style: italic;
+  color: #f0e6d0; line-height: 1.5; margin-bottom: 8px;
+}
+.cta-pre em { color: #e8c97a; }
+.cta-preco-container {
+  margin: 24px 0;
+}
+.cta-de {
+  font-size: 14px; color: rgba(240,230,208,0.45); text-decoration: line-through;
+  margin-bottom: 4px; opacity: .6;
+}
+.cta-preco {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(60px, 12vw, 88px); font-weight: 300;
+  color: #e8c97a; line-height: 1;
+  display: flex; align-items: flex-start; justify-content: center; gap: 4px;
+}
+.cta-preco-sifrao {
+  font-size: 32px; margin-top: 16px; color: #c9a84c;
+}
+.cta-preco-sub {
+  font-size: 13px; color: rgba(240,230,208,0.45); margin-top: 8px;
+}
+
+.cta-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px; font-style: italic; color: rgba(240,230,208,0.45);
+  margin: 16px 0 24px; line-height: 1.7;
+}
+
+.btn-cta {
+  display: block; width: 100%;
+  background: linear-gradient(135deg, #c9a84c, #e8c97a, #c9a84c);
+  background-size: 200% 100%;
+  color: #0a0810; font-family: 'Cinzel', serif;
+  font-size: clamp(13px, 2.5vw, 15px); font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 20px 32px; border: none; cursor: pointer;
+  text-decoration: none; text-align: center;
+  transition: all .3s ease;
+  animation: shimmer 3s linear infinite;
+  margin-bottom: 12px;
+}
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(201,168,76,0.3);
+}
+
+.cta-trust {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 16px;
+  font-size: 11px; color: rgba(240,230,208,0.45); margin-bottom: 32px;
+}
+.cta-trust span { display: flex; align-items: center; gap: 5px; }
+
+.garantia-cert {
+  border: 2px solid rgba(201,168,76,0.3);
+  padding: 28px 24px;
+  display: flex; gap: 20px; align-items: flex-start;
+  background: linear-gradient(135deg, rgba(201,168,76,0.04), transparent);
+  margin-bottom: 32px;
+  position: relative; overflow: hidden;
+}
+.garantia-cert::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+}
+.garantia-selo {
+  flex-shrink: 0; width: 80px; height: 80px;
+  border: 2px solid #c9a84c; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(201,168,76,0.08); text-align: center;
+}
+.garantia-selo-title {
+  font-family: 'Cinzel', serif; font-size: 7px;
+  letter-spacing: 1px; color: #c9a84c; text-transform: uppercase; line-height: 1.4;
+}
+.garantia-selo-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 600; color: #e8c97a; line-height: 1;
+}
+.garantia-selo-days {
+  font-family: 'Cinzel', serif; font-size: 7px;
+  letter-spacing: 1px; color: #c9a84c; text-transform: uppercase;
+}
+.garantia-title {
+  font-family: 'Cinzel', serif; font-size: 12px;
+  letter-spacing: 2px; color: #c9a84c; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.garantia-text {
+  font-size: 14px; line-height: 1.8; color: rgba(240,230,208,0.45);
+}
+.garantia-text strong { color: #f0e6d0; font-weight: 500; }
+
+.trust-footer {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;
+  padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 32px;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; color: rgba(240,230,208,0.45);
+}
+
+.disclaimer {
+  text-align: center; font-size: 11px; color: rgba(240,230,208,0.25);
+  line-height: 1.7; padding-bottom: 40px;
+}
+
+.ancoragem-box {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 24px 24px 0;
+  margin: 32px 0 0;
+}
+.ancoragem-title {
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(240,230,208,0.45); margin-bottom: 16px; text-align: center;
+}
+.ancoragem-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 13px; color: rgba(240,230,208,0.45);
+}
+.ancoragem-val {
+  font-family: 'Cinzel', serif; font-size: 12px;
+  color: rgba(240,230,208,0.4); text-decoration: line-through;
+  flex-shrink: 0; margin-left: 12px;
+}
+.ancoragem-total {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 0;
+  font-family: 'Cinzel', serif; font-size: 13px;
+  color: rgba(240,230,208,0.45); letter-spacing: 1px; text-transform: uppercase;
+}
+.ancoragem-total span:last-child {
+  font-size: 18px; color: rgba(240,230,208,0.5);
+  text-decoration: line-through;
+}
+.porque-box {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: rgba(201,168,76,0.04);
+  border: 1px solid rgba(201,168,76,0.12);
+  border-top: none; padding: 20px 24px; margin-bottom: 0;
+}
+.porque-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.porque-text { font-size: 14px; line-height: 1.8; color: rgba(240,230,208,0.45); }
+.porque-text strong { color: #f0e6d0; font-weight: 500; }
+.porque-text em { color: #e8c97a; font-style: italic; }
+.preco-dramatico {
+  text-align: center;
+  padding: 40px 24px 32px;
+  background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(201,168,76,0.02));
+  border: 1px solid rgba(201,168,76,0.2);
+  border-top: 3px solid #c9a84c;
+  margin: 0 0 32px;
+}
+.preco-de-label {
+  font-size: 14px; color: rgba(240,230,208,0.45);
+  text-decoration: line-through; opacity: .5; margin-bottom: 4px;
+}
+.preco-hoje-label {
+  font-family: 'Cinzel', serif; font-size: 12px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: #c9a84c; margin-bottom: 8px; opacity: .8;
+}
+.preco-numero {
+  display: flex; align-items: flex-start; justify-content: center;
+  gap: 4px; line-height: 1; margin-bottom: 12px;
+}
+.preco-sifrao {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; font-weight: 300;
+  color: #c9a84c; margin-top: 16px;
+}
+.preco-valor {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(96px, 20vw, 140px); font-weight: 300;
+  color: #e8c97a; line-height: .9;
+  text-shadow: 0 0 60px rgba(201,168,76,0.3);
+}
+.preco-detalhe { font-size: 12px; color: rgba(240,230,208,0.45); margin-bottom: 12px; }
+.preco-aviso {
+  display: inline-block;
+  background: rgba(224,85,85,0.08);
+  border: 1px solid rgba(224,85,85,0.2);
+  padding: 6px 14px; font-size: 11px; color: #e05555; opacity: .8;
+}
+
+@media(max-width: 480px) {
+  .two-paths { grid-template-columns: 1fr; }
+  .produto-items { grid-template-columns: 1fr; }
+  .dias-bloqueados { grid-template-columns: repeat(4, 1fr); }
+  .garantia-cert { flex-direction: column; align-items: center; text-align: center; }
 }
 </style>
 </head>
@@ -1661,162 +2161,321 @@ body {
 </div>
 
 <!-- ════════════════════════════════════════════
-     TELA 13 — MAPA ANIMADO + OFERTA
+     TELA 13 — ÚLTIMO BLOCO (BACKUP)
 ════════════════════════════════════════════ -->
 <div id="s13" class="screen">
 
-  <div class="alert-strip">
-    <span>⚠️ Tu Mapa Energético está listo — No Es Tu Culpa</span>
-  </div>
+<!-- ALERTA -->
+<div class="alert-bar reveal reveal-1">
+  <span>
+    <span class="alert-dot"></span>
+    Tu mapa energético está listo — no es tu culpa
+    <span class="alert-dot"></span>
+  </span>
+</div>
 
-  <div class="eyebrow">Tu Mapa Sagrado de Sanación</div>
-  <h2 class="headline" id="r-headline">Las tres cartas revelaron<br><em>tu camino completo</em></h2>
-  <div class="divider"></div>
-  <p class="subtext" style="margin-bottom:8px">
-    Este es tu <strong style="color:var(--cream)">Mapa Energético Personal</strong> — construido por tus propias elecciones.<br>
-    Cada nodo revela una capa de lo que te está bloqueando ahora.
+<!-- ══ BLOCO 1: ENCRUZILHADA ══ -->
+<div class="crossroads reveal reveal-2">
+  <div class="crossroads-eyebrow">El momento de elegir</div>
+  <h2 class="crossroads-headline">
+    Tus cartas hicieron algo que<br>
+    <em>pocas personas tienen el coraje de pedir.</em>
+  </h2>
+  <p class="crossroads-body">
+    Nombraron tu herida en voz alta.<br>
+    Pusieron palabras a algo que llevas cargando en silencio — 
+    <strong>sin que nadie lo viera, sin que nadie lo entendiera.</strong>
+  </p>
+  <p class="crossroads-body">
+    Ahora hay dos caminos.
   </p>
 
-  <!-- ═══ MAPA ANIMADO ═══ -->
-  <div class="map-container" id="map-container">
-    <canvas id="map-canvas"></canvas>
-    <div class="map-nodes" id="map-nodes"></div>
-  </div>
-
-  <p style="text-align:center;font-size:12px;color:var(--text-dim);font-style:italic;margin-top:8px;margin-bottom:40px">
-    🔒 Los detalles completos de cada nodo están en tu Mapa de Sanación desbloqueado
-  </p>
-
-  <!-- ═══ DIAGNÓSTICO ═══ -->
-  <div class="diagnosis-panel">
-    <div class="diag-label">✦ Diagnóstico Energético Personalizado ✦</div>
-    <div class="diag-name" id="r-diag-name">...</div>
-    <div class="diag-body" id="r-diag-body">...</div>
-  </div>
-
-  <!-- ═══ PREVIEW ═══ -->
-  <div class="preview-section">
-    <p id="r-preview">...</p>
-  </div>
-  <p class="preview-hint">↑ Tu lectura completa y el plan de sanación continúan abajo...</p>
-
-  <!-- ═══ TERAPIAS PREVIEW ═══ -->
-  <div class="therapies-preview">
-    <div class="section-title">✦ Lo que está dentro de tu Plataforma de Sanación ✦</div>
-    <div class="therapy-grid" id="therapy-grid"></div>
-    <div class="therapy-lock">
-      <div class="lock-icon">🔒</div>
-      <p>+ <strong id="therapy-count">27</strong> terapias y prácticas adicionales desbloqueadas tras la activación</p>
+  <div class="two-paths">
+    <div class="path path-left">
+      <div class="path-icon">↩</div>
+      <div class="path-label">Seguir igual</div>
+      <div class="path-text">Cerrar esta página. Seguir cargando sola lo que acabas de ver. Esperar que algún día cambie.</div>
+    </div>
+    <div class="path path-right">
+      <div class="path-icon">✦</div>
+      <div class="path-label">El primer paso real</div>
+      <div class="path-text">Dejar que lo que se reveló hoy se convierta en el comienzo de algo diferente. Esta noche.</div>
     </div>
   </div>
+</div>
 
-  <!-- ═══ PLAN 30 DÍAS PREVIEW ═══ -->
-  <div class="plan-preview">
-    <div class="plan-header">
-      <div class="plan-badge">BONO EXCLUSIVO</div>
-      <h3 class="plan-title">Tu Mapa de Sanación de 30 Días</h3>
-      <p class="plan-sub">Personalizado para tu combinación exacta de cartas y bloqueos</p>
-    </div>
-    <div class="plan-days" id="plan-days"></div>
-    <div class="plan-blur">
-      <div class="plan-blur-text">
-        <div class="lock-icon">🔒</div>
-        <p>Días 8 al 30 desbloqueados tras la activación</p>
-      </div>
-    </div>
-  </div>
+<!-- ══ BLOCO 2: HANDHOLDING ══ -->
+<div class="handholding reveal reveal-3">
+  Lo que viene a continuación <strong>no es un curso.</strong> No es información que tendrás que descifrar sola.<br><br>
+  Es un mapa con <strong>tu nombre</strong> — construido exactamente para la herida que tus cartas revelaron.<br><br>
+  <strong>Un paso por día. Empezando esta noche.</strong> Y yo voy a estar en cada paso del camino.
+</div>
 
-  <!-- ═══ TESTIMONIOS ═══ -->
-  <div class="testi-section">
-    <div class="section-title">Mujeres que siguieron el Mapa de Sanación</div>
+<!-- ══ BLOCO 3: MOCKUP VISUAL ══ -->
+<div class="mockup-section reveal reveal-3">
+  <div class="section-eyebrow">Tu entregable</div>
 
-    <div class="testi">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Cuando vi mi mapa por primera vez me quedé paralizada. Era como si alguien hubiera dibujado toda mi vida en una imagen. Cada nodo describía exactamente lo que sentía pero nunca podía poner en palabras. En el <strong>día 14 del plan</strong> recibí una propuesta de trabajo que no esperaba. En el 21, liquidé una deuda que tenía hace 3 años."</p>
-      <div class="testi-author">Claudia R. · 47 años · Ciudad de México</div>
+  <div class="mockup-container">
+    <!-- CAPA -->
+    <div class="mapa-cover">
+      <div class="mapa-cover-stars">✦ ✦ ✦ ✦ ✦</div>
+      <div class="mapa-cover-title">Mapa Sagrado de Sanación</div>
+      <div class="mapa-cover-name">Herida de Vínculo Profunda<br><small style="font-size:14px;opacity:.6">Protocolo Personal de 30 Días</small></div>
     </div>
 
-    <div class="testi">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Era completamente escéptica. Pero el mapa describió mi bloqueo financiero con una precisión que me dio escalofríos. Seguí el plan de 30 días — un día a la vez, cada terapia en el momento justo. Una deuda de <strong>$4,847 pesos</strong> se resolvió de una manera que todavía no puedo explicar."</p>
-      <div class="testi-author">Mariana S. · 52 años · Bogotá, Colombia</div>
-    </div>
-
-    <div class="testi">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Lo que me sorprendió fue la <strong>plataforma de terapias</strong>. Nunca imaginé que existían tantas formas de trabajar el mismo bloqueo. Cada una llegó en el momento justo de mi plan. Hoy, 2 meses después, duermo en paz. La ligereza que buscaba llegó de una manera que no esperaba."</p>
-      <div class="testi-author">Fernanda L. · 44 años · Buenos Aires, Argentina</div>
-    </div>
-  </div>
-
-  <!-- ═══ OFERTA ═══ -->
-  <div class="offer-wrap">
-    <h3 class="offer-headline">
-      Tu mapa está listo.<br>
-      <em>Solo falta activar el camino.</em>
-    </h3>
-    <p class="offer-sub">
-      Todo lo que fue revelado por tus cartas — el diagnóstico completo, la plataforma de +30 terapias y tu Mapa de Sanación de 30 días — te está esperando.
-    </p>
-
-    <div class="offer-panel">
-      <div class="offer-label">✦ Mapa Sagrado de Sanación — Acceso Completo ✦</div>
-
-      <ul class="offer-list">
-        <li><strong style="color:var(--gold-light)">Mapa Energético Completo Desbloqueado</strong> — todos los nodos revelados con la interpretación profunda de cada carta y cómo se interconectan en tu historia</li>
-        <li><strong style="color:var(--gold-light)">Plataforma de +30 Terapias y Prácticas</strong> — biblioteca completa con meditaciones, rituales, frecuencias sonoras, prácticas somáticas y recetas energéticas para tratar cada capa de tu bloqueo</li>
-        <li><strong style="color:var(--gold-light)">Mapa de Sanación de 30 Días Personalizado</strong> — qué terapia hacer cada día, en el orden correcto, según tu combinación exacta de cartas y bloqueos (valor: $297)</li>
-        <li>Audio de la Lectura Completa de tus 3 Cartas — 30 minutos de interpretación profunda y personalizada</li>
-        <li>Ritual en 432Hz calibrado para tu bloqueo específico — escúchalo antes de dormir</li>
-        <li>Acceso al área de miembros — actualizaciones y nuevas terapias añadidas mensualmente</li>
-      </ul>
-
-      <div class="bonus-box">
-        <div class="bonus-label">🎁 BONO — Solo para quienes activen hoy</div>
-        <div class="bonus-title">Mapa de Sanación de 30 Días</div>
-        <p class="bonus-desc">Un plan día a día, construido específicamente para tu combinación de cartas — diciéndote exactamente qué terapia usar en cada momento de tu camino de disolución del bloqueo.</p>
-        <div class="bonus-value">Valor: <span>$297</span> → Incluido gratuitamente</div>
-      </div>
-
-      <div class="price-wrap">
-        <div class="price-from">Valor total de los elementos: $647</div>
-        <div class="price-big"><sup>$</sup>7</div>
-        <div class="price-note">Pago único · Acceso inmediato · Sin mensualidades</div>
-      </div>
-
-      <div class="cta-voice">
-        "Sí — quiero activar mi Mapa Sagrado de Sanación<br>y comenzar mi plan de 30 días hoy mismo."
-      </div>
-
-      <button class="btn-main" onclick="goCheckout()">
-        Activar Mi Mapa de Sanación Ahora — $7 ✦
-      </button>
-      <p class="btn-sub">
-        ⚡ Acceso inmediato · 🔒 Pago 100% seguro<br>
-        Aparece discreto en el estado de cuenta · Sin suscripción mensual
-      </p>
-
-      <div class="guarantee">
-        <div class="guar-seal">GARANTÍA<br>BLINDADA<br>90 DÍAS</div>
-        <div class="guar-text">
-          <strong>No necesitas decidir ahora. Solo di que sí.</strong><br>
-          Accede al Mapa. Sigue el plan de 30 días. Si no sientes que fue construido específicamente para ti — exijo que pidas tu dinero de vuelta. Sin preguntas. Sin burocracia. El riesgo es completamente mío.
+    <!-- ITENS VISUAIS -->
+    <div class="produto-items">
+      <div class="produto-item">
+        <div class="produto-item-icon">🗺️</div>
+        <div class="produto-item-body">
+          <div class="produto-item-title">Mapa Energético Completo</div>
+          <div class="produto-item-sub">Todos los nodos revelados con interpretación profunda de cada carta</div>
+          <div class="produto-item-value">VALOR: $297</div>
         </div>
       </div>
-
-      <div class="trust-bar">
-        <div class="trust-item"><em>🔒</em> Encriptación SSL</div>
-        <div class="trust-item"><em>✦</em> Discreto en el estado de cuenta</div>
-        <div class="trust-item"><em>⚡</em> Acceso inmediato</div>
-        <div class="trust-item"><em>↩</em> 90 días garantizados</div>
+      <div class="produto-item">
+        <div class="produto-item-icon">🎧</div>
+        <div class="produto-item-body">
+          <div class="produto-item-title">Audio de Lectura Completa</div>
+          <div class="produto-item-sub">30 minutos de interpretación profunda y personalizada de tus 3 cartas</div>
+          <div class="produto-item-value">VALOR: $97</div>
+        </div>
+      </div>
+      <div class="produto-item">
+        <div class="produto-item-icon">🔮</div>
+        <div class="produto-item-body">
+          <div class="produto-item-title">Plataforma de +30 Terapias</div>
+          <div class="produto-item-sub">Meditaciones, rituales, frecuencias y prácticas somáticas para tu bloqueo</div>
+          <div class="produto-item-value">VALOR: $197</div>
+        </div>
+      </div>
+      <div class="produto-item">
+        <div class="produto-item-icon">🌙</div>
+        <div class="produto-item-body">
+          <div class="produto-item-title">Ritual en 432Hz</div>
+          <div class="produto-item-sub">Calibrado para tu bloqueo específico — escúchalo antes de dormir esta noche</div>
+          <div class="produto-item-value">VALOR: $47</div>
+        </div>
       </div>
     </div>
-
-    <p style="text-align:center;font-size:11px;color:var(--text-dim);line-height:1.9;margin-top:28px;">
-      Esta lectura tiene fines de reflexión y autoconocimiento.<br>
-      No tiene afiliación con ninguna religión específica.
-    </p>
   </div>
+</div>
+
+<!-- ══ BLOCO 4: DIA 1 DESBLOQUEADO ══ -->
+<div class="dia1-section reveal reveal-4">
+  <div class="section-eyebrow">Tu plan comienza hoy</div>
+
+  <div class="dia1-card">
+    <div class="dia1-badge">
+      <span>✦ Día 1 — Esta noche ✦</span>
+    </div>
+    <div class="dia1-title">Frecuencia de Reconexión</div>
+    <div class="dia1-subtitle">Sesión sonora para abrir el campo relacional bloqueado</div>
+
+    <div class="dia1-instrucoes">
+      <p>Cuando estés lista para dormir, busca un lugar tranquilo. <strong>Pon la mano derecha sobre el centro del pecho.</strong></p>
+      <p>Activa el audio de Frecuencia de Reconexión. <strong>Son 9 minutos.</strong> Cierra los ojos. No tienes que hacer nada más.</p>
+      <p><strong>Tu campo energético hace el trabajo mientras descansas.</strong> Muchas mujeres reportan sentir una calidez suave en el pecho durante los primeros 3 minutos — es la señal de que el proceso comenzó.</p>
+    </div>
+    <div class="dia1-tempo">9 minutos · Antes de dormir · Sin esfuerzo</div>
+  </div>
+
+  <!-- DIAS BLOQUEADOS -->
+  <div style="margin-top: 16px; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07);">
+    <div class="dias-bloqueados">
+      <div class="dia-lock"><div class="dia-lock-num">Día 2</div><span class="dia-lock-icon">🔒</span></div>
+      <div class="dia-lock"><div class="dia-lock-num">Día 3</div><span class="dia-lock-icon">🔒</span></div>
+      <div class="dia-lock"><div class="dia-lock-num">Día 4-7</div><span class="dia-lock-icon">🔒</span></div>
+      <div class="dia-lock"><div class="dia-lock-num">Día 8-14</div><span class="dia-lock-icon">🔒</span></div>
+      <div class="dia-lock"><div class="dia-lock-num">Día 15-21</div><span class="dia-lock-icon">🔒</span></div>
+      <div class="dia-lock"><div class="dia-lock-num">Día 22-30</div><span class="dia-lock-icon">🔒</span></div>
+    </div>
+    <div class="dias-bloqueados-label">Los días 2 al 30 se desbloquean con la activación</div>
+  </div>
+</div>
+
+<!-- ══ BLOCO 5: DEPOIMENTOS ══ -->
+<div class="depos reveal reveal-4">
+  <div class="section-eyebrow">Mujeres que siguieron el mapa</div>
+
+  <div class="depo depo-video">
+    <iframe
+      src="https://play.tynk.ai/p/b0ee90f2-d51b-4108-a438-3f5e00d952e6"
+      width="100%"
+      height="100%"
+      style="aspect-ratio: 16/9; border: none;"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<!-- ══ BLOCO 6: VALUE STACK ══ -->
+<div class="value-stack reveal reveal-5">
+  <div class="section-eyebrow">Lo que recibes</div>
+
+  <div class="stack-items">
+    <div class="stack-item">
+      <div class="stack-item-left">
+        <div class="stack-item-icon">🗺️</div>
+        <div>
+          <div class="stack-item-name">Mapa Sagrado de Sanación Completo</div>
+          <div class="stack-item-sub">Todos los nodos + interpretación profunda</div>
+        </div>
+      </div>
+      <div class="stack-item-price">$297</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-left">
+        <div class="stack-item-icon">📅</div>
+        <div>
+          <div class="stack-item-name">Plan de Sanación de 30 Días</div>
+          <div class="stack-item-sub">Una terapia exacta por día, en el orden correcto</div>
+        </div>
+      </div>
+      <div class="stack-item-price">$197</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-left">
+        <div class="stack-item-icon">🎧</div>
+        <div>
+          <div class="stack-item-name">Audio Lectura Completa — 30 minutos</div>
+          <div class="stack-item-sub">Interpretación profunda y personalizada de tus 3 cartas</div>
+        </div>
+      </div>
+      <div class="stack-item-price">$97</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-left">
+        <div class="stack-item-icon">🔮</div>
+        <div>
+          <div class="stack-item-name">Plataforma de +30 Terapias</div>
+          <div class="stack-item-sub">Biblioteca completa de prácticas para tu bloqueo</div>
+        </div>
+      </div>
+      <div class="stack-item-price">$97</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-left">
+        <div class="stack-item-icon">🌙</div>
+        <div>
+          <div class="stack-item-name">Ritual en 432Hz Personalizado</div>
+          <div class="stack-item-sub">Calibrado para tu bloqueo — escúchalo esta noche</div>
+        </div>
+      </div>
+      <div class="stack-item-price">$47</div>
+    </div>
+  </div>
+
+  <div class="stack-total">
+    <div class="stack-total-label">Valor total</div>
+    <div class="stack-total-value">$735</div>
+  </div>
+</div>
+
+<!-- ══ BLOCO 7: CTA ══ -->
+<div class="cta-section reveal reveal-5">
+  <div class="cta-pre">
+    Tu mapa ya fue construido.<br>
+    <em>El Día 1 te está esperando esta noche.</em>
+  </div>
+
+  <!-- ANCORAGEM DETALHADA -->
+  <div class="ancoragem-box">
+    <div class="ancoragem-title">Si compraras cada parte por separado:</div>
+    <div class="ancoragem-items">
+      <div class="ancoragem-item">
+        <span>🗺️ Mapa Energético Completo</span>
+        <span class="ancoragem-val">$297</span>
+      </div>
+      <div class="ancoragem-item">
+        <span>📅 Plan de Sanación 30 Días</span>
+        <span class="ancoragem-val">$197</span>
+      </div>
+      <div class="ancoragem-item">
+        <span>🎧 Audio Lectura 3 Cartas</span>
+        <span class="ancoragem-val">$97</span>
+      </div>
+      <div class="ancoragem-item">
+        <span>🔮 Plataforma +30 Terapias</span>
+        <span class="ancoragem-val">$97</span>
+      </div>
+      <div class="ancoragem-item">
+        <span>🌙 Ritual 432Hz Personalizado</span>
+        <span class="ancoragem-val">$47</span>
+      </div>
+      <div class="ancoragem-total">
+        <span>Total real</span>
+        <span>$735</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- POR QUÊ $7 -->
+  <div class="porque-box">
+    <div class="porque-icon">💬</div>
+    <div class="porque-text">
+      <strong>¿Por qué $7?</strong><br>
+      Porque quiero que esto llegue a la mujer que más lo necesita — no solo a quien puede pagar $735. Este precio existe para que <em>ninguna herida quede sin nombre por razones económicas.</em>
+    </div>
+  </div>
+
+  <!-- PREÇO DRAMÁTICO -->
+  <div class="preco-dramatico">
+    <div class="preco-de-label">En lugar de $735</div>
+    <div class="preco-hoje-label">Hoy, solo</div>
+    <div class="preco-numero">
+      <span class="preco-sifrao">$</span>
+      <span class="preco-valor">7</span>
+    </div>
+    <div class="preco-detalhe">Pago único · Acceso inmediato · Sin mensualidades</div>
+    <div class="preco-aviso">⚡ Este precio es de lanzamiento y puede cambiar sin previo aviso</div>
+  </div>
+
+  <div class="cta-quote">
+    "Sí — quiero que me acompañes en este primer paso.<br>
+    Quiero activar mi Mapa Sagrado de Sanación y comenzar esta noche."
+  </div>
+
+  <a href="https://pay.hotmart.com/T104851108S?checkoutMode=10" class="btn-cta">
+    Activar mi Mapa de Sanación — $7 ✦
+  </a>
+
+  <div class="cta-trust">
+    <span>⚡ Acceso inmediato</span>
+    <span>🔒 Pago 100% seguro</span>
+    <span>👁 Discreto en el estado de cuenta</span>
+    <span>↩ Sin suscripción mensual</span>
+  </div>
+</div>
+
+<!-- ══ BLOCO 8: GARANTIA CERTIFICADO ══ -->
+<div class="garantia-cert reveal reveal-6">
+  <div class="garantia-selo">
+    <div class="garantia-selo-title">Garantía<br>Blindada</div>
+    <div class="garantia-selo-num">90</div>
+    <div class="garantia-selo-days">días</div>
+  </div>
+  <div class="garantia-body">
+    <div class="garantia-title">No necesitas decidir ahora. Solo di que sí.</div>
+    <div class="garantia-text">
+      Accede al Mapa. Sigue el plan de 30 días. Si no sientes que fue construido específicamente para ti — <strong>exijo que pidas tu dinero de vuelta.</strong> Sin preguntas. Sin burocracia. Sin juicios. El riesgo es completamente mío.
+    </div>
+  </div>
+</div>
+
+<!-- TRUST FOOTER -->
+<div class="trust-footer reveal reveal-6">
+  <div class="trust-item">🔒 Encriptación SSL</div>
+  <div class="trust-item">✦ Discreto en el estado de cuenta</div>
+  <div class="trust-item">⚡ Acceso inmediato</div>
+  <div class="trust-item">↩ 90 días garantizados</div>
+</div>
+
+<div class="disclaimer reveal reveal-6">
+  Esta lectura tiene fines de reflexión y autoconocimiento.<br>
+  No tiene afiliación con ninguna religión específica.
+</div>
 
 </div><!-- /s13 -->
 
@@ -2290,56 +2949,77 @@ const PLANS = {
 // BUILD RESULT
 // ════════════════════════════════════════
 function buildResult(){
-  const dor = ST.dor || 'financeiro';
-  const r = RESULTS[dor];
-  const c1 = CARDS[ST.card1] || CARDS.lua;
-  const c2 = CARDS[ST.card2] || CARDS.estrela;
-  const c3d = C3DATA[ST.card3] || C3DATA.raiz;
-  const l2opts = L2[dor] || L2.financeiro;
-  const l2item = l2opts.find(x=>x.id===ST.layer2) || l2opts[0];
+  try {
+    const dor = ST.dor || 'financeiro';
+    const r = RESULTS[dor] || RESULTS.financeiro;
+    const c1 = CARDS[ST.card1] || CARDS.lua;
+    const c2 = CARDS[ST.card2] || CARDS.estrela;
+    const c3d = C3DATA[ST.card3] || C3DATA.raiz;
+    const l2opts = L2[dor] || L2.financeiro;
+    const l2item = l2opts.find(x=>x.id===ST.layer2) || l2opts[0];
 
-  // Fill texts
-  document.getElementById('r-headline').innerHTML = r.headline;
-  document.getElementById('r-diag-name').textContent = r.diagName;
-  document.getElementById('r-diag-body').innerHTML = r.diagBody;
-  document.getElementById('r-preview').textContent = r.preview;
+    // Fill texts (only if elements exist AND r has the property)
+    const rHeadline = document.getElementById('r-headline');
+    if(rHeadline && r && r.headline) rHeadline.innerHTML = r.headline;
+    
+    const rDiagName = document.getElementById('r-diag-name');
+    if(rDiagName && r && r.diagName) rDiagName.textContent = r.diagName;
+    
+    const rDiagBody = document.getElementById('r-diag-body');
+    if(rDiagBody && r && r.diagBody) rDiagBody.innerHTML = r.diagBody;
+    
+    const rPreview = document.getElementById('r-preview');
+    if(rPreview && r && r.preview) rPreview.textContent = r.preview;
 
-  // Build therapies
-  const tg = document.getElementById('therapy-grid');
-  tg.innerHTML = '';
-  const therapies = THERAPIES[dor] || THERAPIES.financeiro;
-  document.getElementById('therapy-count').textContent = 30 - therapies.length;
-  therapies.forEach(t => {
-    const d = document.createElement('div');
-    d.className = 'therapy-card' + (t.locked ? ' locked' : '');
-    d.innerHTML = `<div class="therapy-icon">${t.icon}</div>
-    <div class="therapy-name">${t.name}</div>
-    <div class="therapy-type">${t.type}</div>`;
-    tg.appendChild(d);
-  });
+    // Build therapies (only if element exists)
+    const tg = document.getElementById('therapy-grid');
+    if(tg) {
+      tg.innerHTML = '';
+      const therapies = THERAPIES[dor] || THERAPIES.financeiro;
+      const therapyCount = document.getElementById('therapy-count');
+      if(therapyCount) therapyCount.textContent = 30 - therapies.length;
+      therapies.forEach(t => {
+        const d = document.createElement('div');
+        d.className = 'therapy-card' + (t.locked ? ' locked' : '');
+        d.innerHTML = `<div class="therapy-icon">${t.icon}</div>
+        <div class="therapy-name">${t.name}</div>
+        <div class="therapy-type">${t.type}</div>`;
+        tg.appendChild(d);
+      });
+    }
 
-  // Build plan preview
-  const pd = document.getElementById('plan-days');
-  pd.innerHTML = '';
-  const plan = PLANS[dor] || PLANS.financeiro;
-  plan.forEach((p,i) => {
-    const d = document.createElement('div');
-    d.className = 'plan-day';
-    d.innerHTML = `
-      <div class="plan-day-num">${p.day}</div>
-      <div class="plan-day-icon">${p.icon}</div>
-      <div class="plan-day-content">
-        <strong>${p.title}</strong>
-        <span>${p.desc}</span>
-      </div>`;
-    pd.appendChild(d);
-    setTimeout(()=>d.classList.add('visible'), 200 + i*200);
-  });
+    // Build plan preview (only if element exists)
+    const pd = document.getElementById('plan-days');
+    if(pd) {
+      pd.innerHTML = '';
+      const plan = PLANS[dor] || PLANS.financeiro;
+      plan.forEach((p,i) => {
+        const d = document.createElement('div');
+        d.className = 'plan-day';
+        d.innerHTML = `
+          <div class="plan-day-num">${p.day}</div>
+          <div class="plan-day-icon">${p.icon}</div>
+          <div class="plan-day-content">
+            <strong>${p.title}</strong>
+            <span>${p.desc}</span>
+          </div>`;
+        pd.appendChild(d);
+        setTimeout(()=>d.classList.add('visible'), 200 + i*200);
+      });
+    }
 
-  goTo('s13');
+    // Sempre vai para s13, mesmo se houver erros acima
+    goTo('s13');
 
-  // Build animated map after screen is visible
-  setTimeout(()=>buildMap(c1, c2, c3d, l2item, dor), 400);
+    // Build animated map after screen is visible (only if function exists)
+    if(typeof buildMap === 'function') {
+      setTimeout(()=>buildMap(c1, c2, c3d, l2item, dor), 400);
+    }
+  } catch(e) {
+    console.error('Erro em buildResult:', e);
+    // Garante que vai para s13 mesmo com erro
+    goTo('s13');
+  }
 }
 
 // ════════════════════════════════════════
@@ -2349,6 +3029,9 @@ function buildMap(c1, c2, c3d, l2item, dor){
   const container = document.getElementById('map-container');
   const canvas = document.getElementById('map-canvas');
   const nodesEl = document.getElementById('map-nodes');
+
+  // Se os elementos não existem, não faz nada
+  if(!container || !canvas || !nodesEl) return;
 
   function render(){
     const W = container.offsetWidth;
