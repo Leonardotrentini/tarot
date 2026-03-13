@@ -1782,13 +1782,29 @@ body {
   margin: 0 0 32px;
 }
 .preco-de-label {
-  font-size: 14px; color: rgba(240,230,208,0.45);
-  text-decoration: line-through; opacity: .5; margin-bottom: 4px;
+  font-size: 14px;
+  color: rgba(240,230,208,0.45);
+  text-decoration: line-through;
+  opacity: .5;
+  margin-top: 8px;
+  margin-bottom: 2px;
 }
 .preco-hoje-label {
   font-family: 'Cinzel', serif; font-size: 12px;
   letter-spacing: 3px; text-transform: uppercase;
-  color: #c9a84c; margin-bottom: 8px; opacity: .8;
+  color: #c9a84c;
+  margin-bottom: 10px;
+  opacity: .8;
+}
+.preco-imagem {
+  display: block;
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  opacity: 0.95;
 }
 .preco-numero {
   display: flex; align-items: flex-start; justify-content: center;
@@ -1818,6 +1834,7 @@ body {
   .produto-items { grid-template-columns: 1fr; }
   .dias-bloqueados { grid-template-columns: repeat(4, 1fr); }
   .garantia-cert { flex-direction: column; align-items: center; text-align: center; }
+  .preco-imagem { max-width: 200px; margin-bottom: 16px; }
 }
 </style>
 </head>
@@ -2161,321 +2178,350 @@ body {
 </div>
 
 <!-- ════════════════════════════════════════════
-     TELA 13 — ÚLTIMO BLOCO (BACKUP)
+     TELA 13 — MAPA ANIMADO + OFERTA
 ════════════════════════════════════════════ -->
 <div id="s13" class="screen">
 
-<!-- ALERTA -->
-<div class="alert-bar reveal reveal-1">
-  <span>
-    <span class="alert-dot"></span>
-    Tu mapa energético está listo — no es tu culpa
-    <span class="alert-dot"></span>
-  </span>
-</div>
+  <div class="alert-strip">
+    <span>⚠️ Tu Mapa Energético está listo — No Es Tu Culpa</span>
+  </div>
 
-<!-- ══ BLOCO 1: ENCRUZILHADA ══ -->
-<div class="crossroads reveal reveal-2">
-  <div class="crossroads-eyebrow">El momento de elegir</div>
-  <h2 class="crossroads-headline">
-    Tus cartas hicieron algo que<br>
-    <em>pocas personas tienen el coraje de pedir.</em>
-  </h2>
-  <p class="crossroads-body">
-    Nombraron tu herida en voz alta.<br>
-    Pusieron palabras a algo que llevas cargando en silencio — 
-    <strong>sin que nadie lo viera, sin que nadie lo entendiera.</strong>
-  </p>
-  <p class="crossroads-body">
-    Ahora hay dos caminos.
+  <div class="eyebrow">Tu Mapa Sagrado de Sanación</div>
+  <h2 class="headline" id="r-headline">Las tres cartas revelaron<br><em>tu camino completo</em></h2>
+  <div class="divider"></div>
+  <p class="subtext" style="margin-bottom:8px">
+    Este es tu <strong style="color:var(--cream)">Mapa Energético Personal</strong> — construido por tus propias elecciones.<br>
+    Cada nodo revela una capa de lo que te está bloqueando ahora.
   </p>
 
-  <div class="two-paths">
-    <div class="path path-left">
-      <div class="path-icon">↩</div>
-      <div class="path-label">Seguir igual</div>
-      <div class="path-text">Cerrar esta página. Seguir cargando sola lo que acabas de ver. Esperar que algún día cambie.</div>
-    </div>
-    <div class="path path-right">
-      <div class="path-icon">✦</div>
-      <div class="path-label">El primer paso real</div>
-      <div class="path-text">Dejar que lo que se reveló hoy se convierta en el comienzo de algo diferente. Esta noche.</div>
+  <!-- ═══ MAPA ANIMADO ═══ -->
+  <div class="map-container" id="map-container">
+    <canvas id="map-canvas"></canvas>
+    <div class="map-nodes" id="map-nodes"></div>
+  </div>
+
+  <p style="text-align:center;font-size:12px;color:var(--text-dim);font-style:italic;margin-top:8px;margin-bottom:40px">
+    🔒 Los detalles completos de cada nodo están en tu Mapa de Sanación desbloqueado
+  </p>
+
+  <!-- ═══ DIAGNÓSTICO ═══ -->
+  <div class="diagnosis-panel">
+    <div class="diag-label">✦ Diagnóstico Energético Personalizado ✦</div>
+    <div class="diag-name" id="r-diag-name">...</div>
+    <div class="diag-body" id="r-diag-body">...</div>
+  </div>
+
+  <!-- ═══ PREVIEW ═══ -->
+  <div class="preview-section">
+    <p id="r-preview">...</p>
+  </div>
+  <p class="preview-hint">↑ Tu lectura completa y el plan de sanación continúan abajo...</p>
+
+  <!-- ═══ CONTINUAÇÃO: BLOCO BACKUP ABAIXO DO MAPA ═══ -->
+
+  <!-- ══ BLOCO 1: ENCRUZILHADA ══ -->
+  <div class="crossroads reveal reveal-2">
+    <div class="crossroads-eyebrow">El momento de elegir</div>
+    <h2 class="crossroads-headline">
+      Tus cartas hicieron algo que<br>
+      <em>pocas personas tienen el coraje de pedir.</em>
+    </h2>
+    <p class="crossroads-body">
+      Nombraron tu herida en voz alta.<br>
+      Pusieron palabras a algo que llevas cargando en silencio — 
+      <strong>sin que nadie lo viera, sin que nadie lo entendiera.</strong>
+    </p>
+    <p class="crossroads-body">
+      Ahora hay dos caminos.
+    </p>
+
+    <div class="two-paths">
+      <div class="path path-left">
+        <div class="path-icon">↩</div>
+        <div class="path-label">Seguir igual</div>
+        <div class="path-text">Cerrar esta página. Seguir cargando sola lo que acabas de ver. Esperar que algún día cambie.</div>
+      </div>
+      <div class="path path-right">
+        <div class="path-icon">✦</div>
+        <div class="path-label">El primer paso real</div>
+        <div class="path-text">Dejar que lo que se reveló hoy se convierta en el comienzo de algo diferente. Esta noche.</div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- ══ BLOCO 2: HANDHOLDING ══ -->
-<div class="handholding reveal reveal-3">
-  Lo que viene a continuación <strong>no es un curso.</strong> No es información que tendrás que descifrar sola.<br><br>
-  Es un mapa con <strong>tu nombre</strong> — construido exactamente para la herida que tus cartas revelaron.<br><br>
-  <strong>Un paso por día. Empezando esta noche.</strong> Y yo voy a estar en cada paso del camino.
-</div>
+  <!-- ══ BLOCO 2: HANDHOLDING ══ -->
+  <div class="handholding reveal reveal-3">
+    Lo que viene a continuación <strong>no es un curso.</strong> No es información que tendrás que descifrar sola.<br><br>
+    Es un mapa con <strong>tu nombre</strong> — construido exactamente para la herida que tus cartas revelaron.<br><br>
+    <strong>Un paso por día. Empezando esta noche.</strong> Y yo voy a estar en cada paso del camino.
+  </div>
 
-<!-- ══ BLOCO 3: MOCKUP VISUAL ══ -->
-<div class="mockup-section reveal reveal-3">
-  <div class="section-eyebrow">Tu entregable</div>
+  <!-- ══ BLOCO 3: MOCKUP VISUAL ══ -->
+  <div class="mockup-section reveal reveal-3">
+    <div class="section-eyebrow">Tu entregable</div>
 
-  <div class="mockup-container">
-    <!-- CAPA -->
-    <div class="mapa-cover">
-      <div class="mapa-cover-stars">✦ ✦ ✦ ✦ ✦</div>
-      <div class="mapa-cover-title">Mapa Sagrado de Sanación</div>
-      <div class="mapa-cover-name">Herida de Vínculo Profunda<br><small style="font-size:14px;opacity:.6">Protocolo Personal de 30 Días</small></div>
-    </div>
+    <div class="mockup-container">
+      <!-- CAPA -->
+      <div class="mapa-cover">
+        <div class="mapa-cover-stars">✦ ✦ ✦ ✦ ✦</div>
+        <div class="mapa-cover-title">Mapa Sagrado de Sanación</div>
+        <div class="mapa-cover-name">Herida de Vínculo Profunda<br><small style="font-size:14px;opacity:.6">Protocolo Personal de 30 Días</small></div>
+      </div>
 
-    <!-- ITENS VISUAIS -->
-    <div class="produto-items">
-      <div class="produto-item">
-        <div class="produto-item-icon">🗺️</div>
-        <div class="produto-item-body">
-          <div class="produto-item-title">Mapa Energético Completo</div>
-          <div class="produto-item-sub">Todos los nodos revelados con interpretación profunda de cada carta</div>
-          <div class="produto-item-value">VALOR: $297</div>
+      <!-- ITENS VISUAIS -->
+      <div class="produto-items">
+        <div class="produto-item">
+          <div class="produto-item-icon">🗺️</div>
+          <div class="produto-item-body">
+            <div class="produto-item-title">Mapa Energético Completo</div>
+            <div class="produto-item-sub">Todos los nodos revelados con interpretación profunda de cada carta</div>
+            <div class="produto-item-value">VALOR: $297</div>
+          </div>
+        </div>
+        <div class="produto-item">
+          <div class="produto-item-icon">🎧</div>
+          <div class="produto-item-body">
+            <div class="produto-item-title">Audio de Lectura Completa</div>
+            <div class="produto-item-sub">30 minutos de interpretación profunda y personalizada de tus 3 cartas</div>
+            <div class="produto-item-value">VALOR: $97</div>
+          </div>
+        </div>
+        <div class="produto-item">
+          <div class="produto-item-icon">🔮</div>
+          <div class="produto-item-body">
+            <div class="produto-item-title">Plataforma de +30 Terapias</div>
+            <div class="produto-item-sub">Meditaciones, rituales, frecuencias y prácticas somáticas para tu bloqueo</div>
+            <div class="produto-item-value">VALOR: $197</div>
+          </div>
+        </div>
+        <div class="produto-item">
+          <div class="produto-item-icon">🌙</div>
+          <div class="produto-item-body">
+            <div class="produto-item-title">Ritual en 432Hz</div>
+            <div class="produto-item-sub">Calibrado para tu bloqueo específico — escúchalo antes de dormir esta noche</div>
+            <div class="produto-item-value">VALOR: $47</div>
+          </div>
         </div>
       </div>
-      <div class="produto-item">
-        <div class="produto-item-icon">🎧</div>
-        <div class="produto-item-body">
-          <div class="produto-item-title">Audio de Lectura Completa</div>
-          <div class="produto-item-sub">30 minutos de interpretación profunda y personalizada de tus 3 cartas</div>
-          <div class="produto-item-value">VALOR: $97</div>
+    </div>
+  </div>
+
+  <!-- ══ BLOCO 4: DIA 1 DESBLOQUEADO ══ -->
+  <div class="dia1-section reveal reveal-4">
+    <div class="section-eyebrow">Tu plan comienza hoy</div>
+
+    <div class="dia1-card">
+      <div class="dia1-badge">
+        <span>✦ Día 1 — Esta noche ✦</span>
+      </div>
+      <div class="dia1-title">Frecuencia de Reconexión</div>
+      <div class="dia1-subtitle">Sesión sonora para abrir el campo relacional bloqueado</div>
+
+      <div class="dia1-instrucoes">
+        <p>Cuando estés lista para dormir, busca un lugar tranquilo. <strong>Pon la mano derecha sobre el centro del pecho.</strong></p>
+        <p>Activa el audio de Frecuencia de Reconexión. <strong>Son 9 minutos.</strong> Cierra los ojos. No tienes que hacer nada más.</p>
+        <p><strong>Tu campo energético hace el trabajo mientras descansas.</strong> Muchas mujeres reportan sentir una calidez suave en el pecho durante los primeros 3 minutos — es la señal de que el proceso comenzó.</p>
+      </div>
+      <div class="dia1-tempo">9 minutos · Antes de dormir · Sin esfuerzo</div>
+    </div>
+
+    <!-- DIAS BLOQUEADOS -->
+    <div style="margin-top: 16px; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07);">
+      <div class="dias-bloqueados">
+        <div class="dia-lock"><div class="dia-lock-num">Día 2</div><span class="dia-lock-icon">🔒</span></div>
+        <div class="dia-lock"><div class="dia-lock-num">Día 3</div><span class="dia-lock-icon">🔒</span></div>
+        <div class="dia-lock"><div class="dia-lock-num">Día 4-7</div><span class="dia-lock-icon">🔒</span></div>
+        <div class="dia-lock"><div class="dia-lock-num">Día 8-14</div><span class="dia-lock-icon">🔒</span></div>
+        <div class="dia-lock"><div class="dia-lock-num">Día 15-21</div><span class="dia-lock-icon">🔒</span></div>
+        <div class="dia-lock"><div class="dia-lock-num">Día 22-30</div><span class="dia-lock-icon">🔒</span></div>
+      </div>
+      <div class="dias-bloqueados-label">Los días 2 al 30 se desbloquean con la activación</div>
+    </div>
+  </div>
+
+  <!-- ══ BLOCO 5: DEPOIMENTOS (VÍDEO) ══ -->
+  <div class="depos reveal reveal-4">
+    <div class="section-eyebrow">Mujeres que siguieron el mapa</div>
+
+    <div class="depo depo-video">
+      <iframe
+        src="https://play.tynk.ai/p/b0ee90f2-d51b-4108-a438-3f5e00d952e6"
+        width="100%"
+        height="100%"
+        style="aspect-ratio: 16/9; border: none;"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <!-- ══ BLOCO 6: VALUE STACK ══ -->
+  <div class="value-stack reveal reveal-5">
+    <div class="section-eyebrow">Lo que recibes</div>
+
+    <div class="stack-items">
+      <div class="stack-item">
+        <div class="stack-item-left">
+          <div class="stack-item-icon">🗺️</div>
+          <div>
+            <div class="stack-item-name">Mapa Sagrado de Sanación Completo</div>
+            <div class="stack-item-sub">Todos los nodos + interpretación profunda</div>
+          </div>
+        </div>
+        <div class="stack-item-price">$297</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-left">
+          <div class="stack-item-icon">📅</div>
+          <div>
+            <div class="stack-item-name">Plan de Sanación de 30 Días</div>
+            <div class="stack-item-sub">Una terapia exacta por día, en el orden correcto</div>
+          </div>
+        </div>
+        <div class="stack-item-price">$197</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-left">
+          <div class="stack-item-icon">🎧</div>
+          <div>
+            <div class="stack-item-name">Audio Lectura Completa — 30 minutos</div>
+            <div class="stack-item-sub">Interpretación profunda y personalizada de tus 3 cartas</div>
+          </div>
+        </div>
+        <div class="stack-item-price">$97</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-left">
+          <div class="stack-item-icon">🔮</div>
+          <div>
+            <div class="stack-item-name">Plataforma de +30 Terapias</div>
+            <div class="stack-item-sub">Biblioteca completa de prácticas para tu bloqueo</div>
+          </div>
+        </div>
+        <div class="stack-item-price">$97</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-left">
+          <div class="stack-item-icon">🌙</div>
+          <div>
+            <div class="stack-item-name">Ritual en 432Hz Personalizado</div>
+            <div class="stack-item-sub">Calibrado para tu bloqueo — escúchalo esta noche</div>
+          </div>
+        </div>
+        <div class="stack-item-price">$47</div>
+      </div>
+    </div>
+
+    <div class="stack-total">
+      <div class="stack-total-label">Valor total</div>
+      <div class="stack-total-value">$735</div>
+    </div>
+  </div>
+
+  <!-- ══ BLOCO 7: CTA FINAL + 7 USD ══ -->
+  <div class="cta-section reveal reveal-5">
+    <div class="cta-pre">
+      Tu mapa ya fue construido.<br>
+      <em>El Día 1 te está esperando esta noche.</em>
+    </div>
+
+    <!-- ANCORAGEM DETALHADA -->
+    <div class="ancoragem-box">
+      <div class="ancoragem-title">Si compraras cada parte por separado:</div>
+      <div class="ancoragem-items">
+        <div class="ancoragem-item">
+          <span>🗺️ Mapa Energético Completo</span>
+          <span class="ancoragem-val">$297</span>
+        </div>
+        <div class="ancoragem-item">
+          <span>📅 Plan de Sanación 30 Días</span>
+          <span class="ancoragem-val">$197</span>
+        </div>
+        <div class="ancoragem-item">
+          <span>🎧 Audio Lectura 3 Cartas</span>
+          <span class="ancoragem-val">$97</span>
+        </div>
+        <div class="ancoragem-item">
+          <span>🔮 Plataforma +30 Terapias</span>
+          <span class="ancoragem-val">$97</span>
+        </div>
+        <div class="ancoragem-item">
+          <span>🌙 Ritual 432Hz Personalizado</span>
+          <span class="ancoragem-val">$47</span>
+        </div>
+        <div class="ancoragem-total">
+          <span>Total real</span>
+          <span>$735</span>
         </div>
       </div>
-      <div class="produto-item">
-        <div class="produto-item-icon">🔮</div>
-        <div class="produto-item-body">
-          <div class="produto-item-title">Plataforma de +30 Terapias</div>
-          <div class="produto-item-sub">Meditaciones, rituales, frecuencias y prácticas somáticas para tu bloqueo</div>
-          <div class="produto-item-value">VALOR: $197</div>
-        </div>
-      </div>
-      <div class="produto-item">
-        <div class="produto-item-icon">🌙</div>
-        <div class="produto-item-body">
-          <div class="produto-item-title">Ritual en 432Hz</div>
-          <div class="produto-item-sub">Calibrado para tu bloqueo específico — escúchalo antes de dormir esta noche</div>
-          <div class="produto-item-value">VALOR: $47</div>
-        </div>
+    </div>
+
+    <!-- POR QUÊ $7 -->
+    <div class="porque-box">
+      <div class="porque-icon">💬</div>
+      <div class="porque-text">
+        <strong>¿Por qué $7?</strong><br>
+        Porque quiero que esto llegue a la mujer que más lo necesita — no solo a quien puede pagar $735. Este precio existe para que <em>ninguna herida quede sin nombre por razones económicas.</em>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- ══ BLOCO 4: DIA 1 DESBLOQUEADO ══ -->
-<div class="dia1-section reveal reveal-4">
-  <div class="section-eyebrow">Tu plan comienza hoy</div>
-
-  <div class="dia1-card">
-    <div class="dia1-badge">
-      <span>✦ Día 1 — Esta noche ✦</span>
-    </div>
-    <div class="dia1-title">Frecuencia de Reconexión</div>
-    <div class="dia1-subtitle">Sesión sonora para abrir el campo relacional bloqueado</div>
-
-    <div class="dia1-instrucoes">
-      <p>Cuando estés lista para dormir, busca un lugar tranquilo. <strong>Pon la mano derecha sobre el centro del pecho.</strong></p>
-      <p>Activa el audio de Frecuencia de Reconexión. <strong>Son 9 minutos.</strong> Cierra los ojos. No tienes que hacer nada más.</p>
-      <p><strong>Tu campo energético hace el trabajo mientras descansas.</strong> Muchas mujeres reportan sentir una calidez suave en el pecho durante los primeros 3 minutos — es la señal de que el proceso comenzó.</p>
-    </div>
-    <div class="dia1-tempo">9 minutos · Antes de dormir · Sin esfuerzo</div>
-  </div>
-
-  <!-- DIAS BLOQUEADOS -->
-  <div style="margin-top: 16px; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07);">
-    <div class="dias-bloqueados">
-      <div class="dia-lock"><div class="dia-lock-num">Día 2</div><span class="dia-lock-icon">🔒</span></div>
-      <div class="dia-lock"><div class="dia-lock-num">Día 3</div><span class="dia-lock-icon">🔒</span></div>
-      <div class="dia-lock"><div class="dia-lock-num">Día 4-7</div><span class="dia-lock-icon">🔒</span></div>
-      <div class="dia-lock"><div class="dia-lock-num">Día 8-14</div><span class="dia-lock-icon">🔒</span></div>
-      <div class="dia-lock"><div class="dia-lock-num">Día 15-21</div><span class="dia-lock-icon">🔒</span></div>
-      <div class="dia-lock"><div class="dia-lock-num">Día 22-30</div><span class="dia-lock-icon">🔒</span></div>
-    </div>
-    <div class="dias-bloqueados-label">Los días 2 al 30 se desbloquean con la activación</div>
-  </div>
-</div>
-
-<!-- ══ BLOCO 5: DEPOIMENTOS ══ -->
-<div class="depos reveal reveal-4">
-  <div class="section-eyebrow">Mujeres que siguieron el mapa</div>
-
-  <div class="depo depo-video">
-    <iframe
-      src="https://play.tynk.ai/p/b0ee90f2-d51b-4108-a438-3f5e00d952e6"
-      width="100%"
-      height="100%"
-      style="aspect-ratio: 16/9; border: none;"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<!-- ══ BLOCO 6: VALUE STACK ══ -->
-<div class="value-stack reveal reveal-5">
-  <div class="section-eyebrow">Lo que recibes</div>
-
-  <div class="stack-items">
-    <div class="stack-item">
-      <div class="stack-item-left">
-        <div class="stack-item-icon">🗺️</div>
-        <div>
-          <div class="stack-item-name">Mapa Sagrado de Sanación Completo</div>
-          <div class="stack-item-sub">Todos los nodos + interpretación profunda</div>
-        </div>
+    <!-- PREÇO DRAMÁTICO -->
+    <div class="preco-dramatico">
+      <img src="/public/Place_image_on_cell_phone_c37b37eaea.jpeg" alt="Celular com app" class="preco-imagem">
+      <div class="preco-numero">
+        <span class="preco-sifrao">$</span>
+        <span class="preco-valor">7</span>
       </div>
-      <div class="stack-item-price">$297</div>
+      <div class="preco-de-label">En lugar de $735</div>
+      <div class="preco-hoje-label">HOY, SOLO</div>
+      <div class="preco-detalhe">Pago único · Acceso inmediato · Sin mensualidades</div>
+      <div class="preco-aviso">⚡ Este precio es de lanzamiento y puede cambiar sin previo aviso</div>
     </div>
-    <div class="stack-item">
-      <div class="stack-item-left">
-        <div class="stack-item-icon">📅</div>
-        <div>
-          <div class="stack-item-name">Plan de Sanación de 30 Días</div>
-          <div class="stack-item-sub">Una terapia exacta por día, en el orden correcto</div>
-        </div>
-      </div>
-      <div class="stack-item-price">$197</div>
+
+    <div class="cta-quote">
+      "Sí — quiero que me acompañes en este primer paso.<br>
+      Quiero activar mi Mapa Sagrado de Sanación y comenzar esta noche."
     </div>
-    <div class="stack-item">
-      <div class="stack-item-left">
-        <div class="stack-item-icon">🎧</div>
-        <div>
-          <div class="stack-item-name">Audio Lectura Completa — 30 minutos</div>
-          <div class="stack-item-sub">Interpretación profunda y personalizada de tus 3 cartas</div>
-        </div>
-      </div>
-      <div class="stack-item-price">$97</div>
-    </div>
-    <div class="stack-item">
-      <div class="stack-item-left">
-        <div class="stack-item-icon">🔮</div>
-        <div>
-          <div class="stack-item-name">Plataforma de +30 Terapias</div>
-          <div class="stack-item-sub">Biblioteca completa de prácticas para tu bloqueo</div>
-        </div>
-      </div>
-      <div class="stack-item-price">$97</div>
-    </div>
-    <div class="stack-item">
-      <div class="stack-item-left">
-        <div class="stack-item-icon">🌙</div>
-        <div>
-          <div class="stack-item-name">Ritual en 432Hz Personalizado</div>
-          <div class="stack-item-sub">Calibrado para tu bloqueo — escúchalo esta noche</div>
-        </div>
-      </div>
-      <div class="stack-item-price">$47</div>
+
+    <a href="https://pay.hotmart.com/T104851108S?checkoutMode=10" class="btn-cta">
+      Activar mi Mapa de Sanación — $7 ✦
+    </a>
+
+    <div class="cta-trust">
+      <span>⚡ Acceso inmediato</span>
+      <span>🔒 Pago 100% seguro</span>
+      <span>👁 Discreto en el estado de cuenta</span>
+      <span>↩ Sin suscripción mensual</span>
     </div>
   </div>
 
-  <div class="stack-total">
-    <div class="stack-total-label">Valor total</div>
-    <div class="stack-total-value">$735</div>
-  </div>
-</div>
-
-<!-- ══ BLOCO 7: CTA ══ -->
-<div class="cta-section reveal reveal-5">
-  <div class="cta-pre">
-    Tu mapa ya fue construido.<br>
-    <em>El Día 1 te está esperando esta noche.</em>
-  </div>
-
-  <!-- ANCORAGEM DETALHADA -->
-  <div class="ancoragem-box">
-    <div class="ancoragem-title">Si compraras cada parte por separado:</div>
-    <div class="ancoragem-items">
-      <div class="ancoragem-item">
-        <span>🗺️ Mapa Energético Completo</span>
-        <span class="ancoragem-val">$297</span>
-      </div>
-      <div class="ancoragem-item">
-        <span>📅 Plan de Sanación 30 Días</span>
-        <span class="ancoragem-val">$197</span>
-      </div>
-      <div class="ancoragem-item">
-        <span>🎧 Audio Lectura 3 Cartas</span>
-        <span class="ancoragem-val">$97</span>
-      </div>
-      <div class="ancoragem-item">
-        <span>🔮 Plataforma +30 Terapias</span>
-        <span class="ancoragem-val">$97</span>
-      </div>
-      <div class="ancoragem-item">
-        <span>🌙 Ritual 432Hz Personalizado</span>
-        <span class="ancoragem-val">$47</span>
-      </div>
-      <div class="ancoragem-total">
-        <span>Total real</span>
-        <span>$735</span>
+  <!-- ══ BLOCO 8: GARANTIA CERTIFICADO ══ -->
+  <div class="garantia-cert reveal reveal-6">
+    <div class="garantia-selo">
+      <div class="garantia-selo-title">Garantía<br>Blindada</div>
+      <div class="garantia-selo-num">90</div>
+      <div class="garantia-selo-days">días</div>
+    </div>
+    <div class="garantia-body">
+      <div class="garantia-title">No necesitas decidir ahora. Solo di que sí.</div>
+      <div class="garantia-text">
+        Accede al Mapa. Sigue el plan de 30 días. Si no sientes que fue construido específicamente para ti — <strong>exijo que pidas tu dinero de vuelta.</strong> Sin preguntas. Sin burocracia. Sin juicios. El riesgo es completamente mío.
       </div>
     </div>
   </div>
 
-  <!-- POR QUÊ $7 -->
-  <div class="porque-box">
-    <div class="porque-icon">💬</div>
-    <div class="porque-text">
-      <strong>¿Por qué $7?</strong><br>
-      Porque quiero que esto llegue a la mujer que más lo necesita — no solo a quien puede pagar $735. Este precio existe para que <em>ninguna herida quede sin nombre por razones económicas.</em>
-    </div>
+  <!-- TRUST FOOTER -->
+  <div class="trust-footer reveal reveal-6">
+    <div class="trust-item">🔒 Encriptación SSL</div>
+    <div class="trust-item">✦ Discreto en el estado de cuenta</div>
+    <div class="trust-item">⚡ Acceso inmediato</div>
+    <div class="trust-item">↩ 90 días garantizados</div>
   </div>
 
-  <!-- PREÇO DRAMÁTICO -->
-  <div class="preco-dramatico">
-    <div class="preco-de-label">En lugar de $735</div>
-    <div class="preco-hoje-label">Hoy, solo</div>
-    <div class="preco-numero">
-      <span class="preco-sifrao">$</span>
-      <span class="preco-valor">7</span>
-    </div>
-    <div class="preco-detalhe">Pago único · Acceso inmediato · Sin mensualidades</div>
-    <div class="preco-aviso">⚡ Este precio es de lanzamiento y puede cambiar sin previo aviso</div>
+  <div class="disclaimer reveal reveal-6">
+    Esta lectura tiene fines de reflexión y autoconocimiento.<br>
+    No tiene afiliación con nenhuma religião específica.
   </div>
-
-  <div class="cta-quote">
-    "Sí — quiero que me acompañes en este primer paso.<br>
-    Quiero activar mi Mapa Sagrado de Sanación y comenzar esta noche."
-  </div>
-
-  <a href="https://pay.hotmart.com/T104851108S?checkoutMode=10" class="btn-cta">
-    Activar mi Mapa de Sanación — $7 ✦
-  </a>
-
-  <div class="cta-trust">
-    <span>⚡ Acceso inmediato</span>
-    <span>🔒 Pago 100% seguro</span>
-    <span>👁 Discreto en el estado de cuenta</span>
-    <span>↩ Sin suscripción mensual</span>
-  </div>
-</div>
-
-<!-- ══ BLOCO 8: GARANTIA CERTIFICADO ══ -->
-<div class="garantia-cert reveal reveal-6">
-  <div class="garantia-selo">
-    <div class="garantia-selo-title">Garantía<br>Blindada</div>
-    <div class="garantia-selo-num">90</div>
-    <div class="garantia-selo-days">días</div>
-  </div>
-  <div class="garantia-body">
-    <div class="garantia-title">No necesitas decidir ahora. Solo di que sí.</div>
-    <div class="garantia-text">
-      Accede al Mapa. Sigue el plan de 30 días. Si no sientes que fue construido específicamente para ti — <strong>exijo que pidas tu dinero de vuelta.</strong> Sin preguntas. Sin burocracia. Sin juicios. El riesgo es completamente mío.
-    </div>
-  </div>
-</div>
-
-<!-- TRUST FOOTER -->
-<div class="trust-footer reveal reveal-6">
-  <div class="trust-item">🔒 Encriptación SSL</div>
-  <div class="trust-item">✦ Discreto en el estado de cuenta</div>
-  <div class="trust-item">⚡ Acceso inmediato</div>
-  <div class="trust-item">↩ 90 días garantizados</div>
-</div>
-
-<div class="disclaimer reveal reveal-6">
-  Esta lectura tiene fines de reflexión y autoconocimiento.<br>
-  No tiene afiliación con ninguna religión específica.
-</div>
 
 </div><!-- /s13 -->
 
